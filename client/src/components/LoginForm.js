@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Label, TextInput, Checkbox, Button, Modal, DarkThemeToggle, Flowbite } from 'flowbite-react';
 
 export default function LoginForm() {
@@ -50,9 +51,11 @@ export default function LoginForm() {
                                 </a>
                             </div>
                             <div className="w-full">
-                                <Button>
-                                    Log in to your account
-                                </Button>
+                                <Link to="/landingPage">
+                                    <Button>
+                                        Log in to your account
+                                    </Button>
+                                </Link>
                             </div>
                             <div className="text-sm font-medium text-gray-500 dark:text-gray-300">
                                 Not registered?{' '}

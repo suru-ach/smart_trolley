@@ -49,23 +49,21 @@ export default function NavbarComponent() {
                 </div>
                 <Navbar.Collapse>
                     <Navbar.Link
-                        href="/navbars"
+                        href="/landingPage"
                         active={true}
                     >
                         Home
                     </Navbar.Link>
-                    <Navbar.Link href="/navbars">
+                    <Navbar.Link href="/about">
                         About
                     </Navbar.Link>
-                    <Navbar.Link href="/navbars">
+                    <Navbar.Link href="/cart">
                         Cart<i class="fa-thin fa-cart-shopping"></i>
                     </Navbar.Link>
                     <Navbar.Link href="/navbars">
                         Previous Bills
-                    </Navbar.Link>
-                    <Navbar.Link href="/navbars">
-                        Contact
-                    </Navbar.Link>
+                   </Navbar.Link>
+                   
                 </Navbar.Collapse>
             </Navbar>
         </>
