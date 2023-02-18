@@ -10,6 +10,7 @@ export default function LoginForm() {
                     show={true}
                     size="md"
                     popup={true}
+                    
                 >
                     <Modal.Body className="pt-10">
                         <div className="space-y-6 px-6 pb-4 sm:pb-6 lg:px-8 xl:pb-8">
