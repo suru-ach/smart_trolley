@@ -9,12 +9,12 @@ export default function NavbarComponent() {
             >
                 <Navbar.Brand href="https://flowbite.com/">
                     <img
-                        src="https://flowbite.com/docs/images/logo.svg"
+                        src="./Images/Mypr.png"
                         className="mr-3 h-6 sm:h-9"
-                        alt="Flowbite Logo"
+                        alt="Smart_Trolley logo"
                     />
                     <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
-                        Flowbite
+                        Smart Trolley
                     </span>
                 </Navbar.Brand>
                 <div className="flex md:order-2">
@@ -60,7 +60,7 @@ export default function NavbarComponent() {
                     <Navbar.Link href="/cart">
                         Cart<i class="fa-thin fa-cart-shopping"></i>
                     </Navbar.Link>
-                    <Navbar.Link href="/navbars">
+                    <Navbar.Link href="/previousbill">
                         Previous Bills
                    </Navbar.Link>
                    
