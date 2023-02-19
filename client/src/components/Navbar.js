@@ -58,7 +58,7 @@ export default function NavbarComponent() {
                         About
                     </Navbar.Link>
                     <Navbar.Link href="/cart">
-                        Cart<i class="fa-thin fa-cart-shopping"></i>
+                        Cart<i className="fa-thin fa-cart-shopping"></i>
                     </Navbar.Link>
                     <Navbar.Link href="/previousbill">
                         Previous Bills

@@ -3,6 +3,17 @@ import { Link } from "react-router-dom";
 import { Label, TextInput, Checkbox, Button, Modal, DarkThemeToggle, Flowbite } from 'flowbite-react';
 
 export default function LoginForm() {
+
+    // testing out proxy
+    // const [login, setLogin] = useState('');
+    // useEffect(() => {
+    //     fetch('/api')
+            // .then(res => res.json())
+            // .then(data => setLogin(data))
+            // .catch(err => console.log(err));
+    // }, []);
+    
+
     return (
         <>
             <React.Fragment>
