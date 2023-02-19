@@ -5,6 +5,7 @@ import LoginForm from './components/LoginForm';
 import Home from './pages/Home';
 import About from './pages/About';
 import Cart from './pages/Cart';
+import Previous from './pages/Previous';
 
 function App() {
   const theme = useTheme().theme.button
@@ -18,6 +19,7 @@ function App() {
             <Route path='/landingPage' element = {<Home/>}/>
             <Route path='/about' element = {<About/>}/>
             <Route path='/cart' element = {<Cart/>}/>
+            <Route path='/previousbill' element = {<Previous/>}/>
           </Routes>
         </BrowserRouter>
       </Flowbite>
