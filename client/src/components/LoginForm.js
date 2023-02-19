@@ -1,4 +1,5 @@
 import React from "react";
+import Newregistration from "./Newregister";
 import { Link } from "react-router-dom";
 import { Label, TextInput, Checkbox, Button, Modal, DarkThemeToggle, Flowbite } from 'flowbite-react';
 
@@ -61,7 +62,7 @@ export default function LoginForm() {
                             <div className="text-sm font-medium text-gray-500 dark:text-gray-300">
                                 Not registered?{' '}
                                 <a
-                                    href="/modal"
+                                    href="/newregistration"
                                     className="text-blue-700 hover:underline dark:text-blue-500"
                                 >
                                     Create account
