@@ -1,9 +1,44 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Newregistration from "./Newregister";
-import { Link } from "react-router-dom";
-import { Label, TextInput, Checkbox, Button, Modal, DarkThemeToggle, Flowbite } from 'flowbite-react';
+import { json, Link } from "react-router-dom";
+import { Label, TextInput, Button, Modal } from 'flowbite-react';
 
 export default function LoginForm() {
+    useEffect(() => {
+        function loginUser() {
+            const phone = document.getElementById('phone').value;
+            const password = document.getElementById('password').value;
+            fetch(
+                `http://localhost:8000/login?phone=${phone}&password=${password}`,
+                {
+                    headers: {
+                        'Access-Control-Allow-Origin': '*'
+                    }
+                }
+
+            )
+                .then((response) => {
+                    // console.log(response);
+                    if (response.status == 205) {
+                        const loggedCookie = { user: phone, loggedIn: true };
+                        document.cookie = JSON.stringify(loggedCookie);
+                        window.location.replace('http://localhost:3000/landingPage')
+
+                    }
+                    else if (response.status == 203) {
+                        alert("Incorrect Credentials Please try agian!")
+                        window.location.reload()
+
+                    }
+                    else {
+                        alert("User not found! Please Register")
+                        window.location.reload()
+                    }
+                })
+        }
+        document.getElementById('submit-login').addEventListener('click', loginUser)
+    });
+
     return (
         <>
             <React.Fragment>
@@ -11,7 +46,7 @@ export default function LoginForm() {
                     show={true}
                     size="md"
                     popup={true}
-                    
+
                 >
                     <Modal.Body className="pt-10">
                         <div className="space-y-6 px-6 pb-4 sm:pb-6 lg:px-8 xl:pb-8">
@@ -21,13 +56,13 @@ export default function LoginForm() {
                             <div>
                                 <div className="mb-2 block">
                                     <Label
-                                        htmlFor="email"
+                                        htmlFor="phone"
                                         value="Your email"
                                     />
                                 </div>
                                 <TextInput
-                                    id="email"
-                                    placeholder="name@company.com"
+                                    id="phone"
+                                    placeholder="Phone Number"
                                     required={true}
                                 />
                             </div>
@@ -53,8 +88,8 @@ export default function LoginForm() {
                                 </a>
                             </div>
                             <div className="w-full">
-                                <Link to="/landingPage">
-                                    <Button>
+                                <Link to="">
+                                    <Button id="submit-login">
                                         Log in to your account
                                     </Button>
                                 </Link>

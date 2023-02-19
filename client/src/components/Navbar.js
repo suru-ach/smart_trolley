@@ -1,6 +1,14 @@
-import React from "react";
-import { Dropdown, Navbar, Avatar, DarkThemeToggle, } from "flowbite-react";
+import React, { useEffect } from "react";
+import { Dropdown, Navbar, Avatar, DarkThemeToggle, Button, } from "flowbite-react";
+
 export default function NavbarComponent() {
+    useEffect(() => {
+        function userLogout() {
+            window.location.replace("http://localhost:3000/");
+            document.cookie = `${document.cookie}; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`
+        }
+        document.getElementById('signOut-btn').addEventListener('click', userLogout)
+    })
     return (
         <>
             <Navbar
@@ -42,7 +50,7 @@ export default function NavbarComponent() {
                         </Dropdown.Item>
                         <Dropdown.Divider />
                         <Dropdown.Item>
-                            Sign out
+                            <Button id="signOut-btn" className="text-center m-auto w-full">Sign out</Button>
                         </Dropdown.Item>
                     </Dropdown>
                     <Navbar.Toggle />
@@ -58,12 +66,12 @@ export default function NavbarComponent() {
                         About
                     </Navbar.Link>
                     <Navbar.Link href="/cart">
-                        Cart<i class="fa-thin fa-cart-shopping"></i>
+                        Cart<i className="fa-thin fa-cart-shopping"></i>
                     </Navbar.Link>
                     <Navbar.Link href="/previousbill">
                         Previous Bills
-                   </Navbar.Link>
-                   
+                    </Navbar.Link>
+
                 </Navbar.Collapse>
             </Navbar>
         </>
