@@ -36,7 +36,6 @@ server
         item
         product
     middlewares
-        asyncWrapper
         auth
     modles
         User
@@ -62,9 +61,9 @@ client
 ### user
 
 ```sh
-    \api\signin \\post
-    \api\signup \\post
-    \api\signout \\get
+    /api/signin \\post
+    /api/signup \\post
+    /api/signout \\get
 ```
 payloads
 
@@ -76,8 +75,8 @@ work to be done! (update using sockets)
 
 ```sh
     #by consumer
-    \api\item      \\get and post
-    \api\item\:id  \\get and delete
+    /api/item      \\get and post
+    /api/item/:id  \\get and delete
 ```
 work to be done! (update using sockets)
 
@@ -85,8 +84,8 @@ work to be done! (update using sockets)
 
 ```sh
     #by admin
-    \api\product \\get and post
-    \api\product\:id \\get, post and delete
+    /api/product \\get and post
+    /api/product/:id \\get, post and delete
 ```
 
 ### jwt payload
