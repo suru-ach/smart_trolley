@@ -10,7 +10,7 @@ app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 
 app.use(userRouter);
-app.use(adminRouter);
+// app.use(adminRouter); // authentication required
 
 app.listen(port , () => {
     console.log(`port ${port}`);
