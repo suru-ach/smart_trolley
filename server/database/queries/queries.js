@@ -6,7 +6,7 @@ const deleteDB = `DROP DATABASE IF EXISTS ${database}`;
 
 const createUserTable = 
 `CREATE TABLE customers (
-    Contact_Number INT NOT NULL,
+    Contact_Number VARCHAR(50) NOT NULL,
     Customer_Name VARCHAR(50) NOT NULL,
     Email VARCHAR(50) NOT NULL,
     Password VARCHAR(255) NOT NULL,

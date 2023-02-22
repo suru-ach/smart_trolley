@@ -6,6 +6,10 @@ const { port } = require('./utils/secret.utils');
 const userRouter = require('./routers/user.router');
 const adminRouter = require('./routers/admin.router');
 
+app.get('/api', (req, res) => {
+    return res.json({data: "data"});
+});
+
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 
@@ -14,4 +18,4 @@ app.use(userRouter);
 
 app.listen(port , () => {
     console.log(`port ${port}`);
-})
+});

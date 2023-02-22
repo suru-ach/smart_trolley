@@ -11,7 +11,7 @@ class User {
     constructor(username, contact, password, email) {
         this.username = username;
         this.password = password;
-        this.contact = contact;
+        this.contact = parseInt(contact);
         this.email = email;
     }
     
