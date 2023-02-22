@@ -5,7 +5,6 @@ const User = require("../models/user.model");
 const { jwt_key, jwt_expire } = require('../utils/secret.utils');
 
 const signIn = async(req, res) => {
-    console.log(await User.getUsers());
     const { username, contact, password, email } = req.body;
     if(!contact || !password) {
         return res.status(401).json({status: "error", data: "invalid credentials"});
@@ -32,7 +31,6 @@ const signIn = async(req, res) => {
 }
 
 const signUp = async(req, res) => {
-    console.log(await User.getUsers());
     const { username, contact, password, email } = req.body;
     if(!username || !contact || !password || !email) {
         return res.status(401).json({status: "error", data: "invalid credentials"});

@@ -31,8 +31,7 @@ class User {
     }
 
     static async getUsers() {
-        const data = await pool.execute(`SELECT * FROM customers`);
-        console.log(data);
+        return await pool.execute(`SELECT * FROM customers`);
     }
 }
 

@@ -37,7 +37,6 @@ export default function RegisterForm() {
                 }, 1000);
             }
         } catch(err) {
-            console.log(err);
             setMsgColor(msgColors.error);
             setMessage(err.response.data.data);
             setTimeout(() => {

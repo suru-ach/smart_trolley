@@ -35,7 +35,6 @@ export default function LoginForm() {
                 }, 1000);
             }
         } catch(err) {
-            console.log(err);
             setMsgColor(msgColors.error);
             setMessage(err.response.data.data);
             setTimeout(() => {

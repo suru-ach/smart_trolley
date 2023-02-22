@@ -7,10 +7,10 @@ export default function FooterComponent() {
                 <div className="w-full text-center">
                     <div className="w-full justify-between sm:flex sm:items-center sm:justify-between">
                         <Footer.Brand
-                            href="https://flowbite.com"
-                            src="https://flowbite.com/docs/images/logo.svg"
-                            alt="Flowbite Logo"
-                            name="Flowbite"
+                            href="#"
+                            src="./Images/Mypr.png"
+                            alt="Smart_Trolley logo"
+                            name="Smart Trolley"
                         />
                         <Footer.LinkGroup>
                             <Footer.Link href="#">
@@ -30,7 +30,7 @@ export default function FooterComponent() {
                     <Footer.Divider />
                     <Footer.Copyright
                         href="#"
-                        by="Flowbite™"
+                        by="Smart Trolley™"
                         year={2022}
                     />
                 </div>
