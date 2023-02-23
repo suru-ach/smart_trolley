@@ -1,11 +1,5 @@
 const pool = require('../database/config/db');
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
-
-const hash = async (password) => {
-    const salt = await bcrypt.genSalt(10);
-    return await bcrypt.hash(password, salt);
-}
+const hash = require('../utils/password.utils');
 
 class User {
     constructor(username, contact, password, email) {
