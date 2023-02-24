@@ -46,8 +46,8 @@ server
         item
         products
     utils
-        token
         password
+        secret
         dbLogger
 ```
 ! work to be done

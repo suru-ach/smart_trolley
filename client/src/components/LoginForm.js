@@ -8,6 +8,12 @@ const msgColors = {
     error: 'text-red-500'
 }
 
+const setLocalStorage = (data) => {
+    for(const key in data) {
+        window.localStorage.setItem(key, data[key]);
+    }
+}
+
 export default function LoginForm() {
 
     const [contact, setContact] = useState('');
@@ -26,6 +32,7 @@ export default function LoginForm() {
             if(data.status === 200) {
                 setMsgColor(msgColors.success);
                 setMessage(data.data.data);
+                setLocalStorage(data.data.userInfo);
                 setPassword('');
                 setContact('');
                 setTimeout(() => {

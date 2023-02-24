@@ -13,8 +13,17 @@ const createUserTable =
     Sl_No INT PRIMARY KEY AUTO_INCREMENT
 );`;
 
+const createProductsTable = 
+`CREATE TABLE all_products (
+    Product_ID INT NOT NULL,
+    Product_Name VARCHAR(100) NOT NULL,
+    Cost FLOAT NOT NULL,
+    Sl_No INT PRIMARY KEY AUTO_INCREMENT
+);`
+
 module.exports = {
     createDB,
     deleteDB,
-    createUserTable
+    createUserTable,
+    createProductsTable
 };

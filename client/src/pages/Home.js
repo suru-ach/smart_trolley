@@ -1,13 +1,12 @@
 import { DarkThemeToggle, } from "flowbite-react";
 import { useTheme, useThemeMode, } from "flowbite-react";
-import React from "react";
 import Navbar from "../components/Navbar";
 import CarouselComponent from "../components/Carousel";
 import CardComponent from "../components/Card";
 import FooterComponent from "../components/Footer";
 
-
 export default function Home() {
+
     return (
         <>
             <React.Fragment>

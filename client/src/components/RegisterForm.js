@@ -8,6 +8,12 @@ const msgColors = {
     error: 'text-red-400'
 }
 
+const setLocalStorage = (data) => {
+    for(const key in data) {
+        window.localStorage.setItem(key, data[key]);
+    }
+}
+
 export default function RegisterForm() {
 
     const [contact, setContact] = useState('');
@@ -28,8 +34,11 @@ export default function RegisterForm() {
             if(data.status === 201) {
                 setMsgColor(msgColors.success);
                 setMessage(data.data.data);
+                setLocalStorage(data.data.userInfo);
                 setPassword('');
                 setContact('');
+                setEmail('');
+                setUsername('');
                 setTimeout(() => {
                     setMessage('');
                     setDisabled(false);

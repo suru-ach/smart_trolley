@@ -10,10 +10,9 @@ CREATE TABLE all_bills (
 )
 
 CREATE TABLE all_products (
-    Product_ID INT(10) NOT NULL,
+    Product_ID INT NOT NULL,
     Product_Name VARCHAR(100) NOT NULL,
-    Quantity_Available INT(11) NOT NULL,
-    Cost NOT NULL,
+    Cost FLOAT NOT NULL,
     Sl_No INT PRIMARY KEY AUTO_INCREMENT
 )
 

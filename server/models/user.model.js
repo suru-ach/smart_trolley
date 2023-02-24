@@ -12,9 +12,9 @@ class User {
     async create() {
         this.password = await hash(this.password);
         const data = await pool.execute(`
-        INSERT INTO customers (Contact_Number,Customer_Name, Email,Password) 
+        INSERT INTO customers (Contact_Number,Customer_Name, Email,Password,Sl_No)
         VALUES 
-        ('${this.contact}', '${this.username}', '${this.email}', '${this.password}');
+        ('${this.contact}', '${this.username}', '${this.email}', '${this.password}', null);
         `);
         return data;
     }
