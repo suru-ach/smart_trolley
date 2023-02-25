@@ -13,7 +13,6 @@ const auth_token = (req, res, next) => {
     } catch(err) {
         return res.status(401).json({status: "error", data: "invalid user", error: err});
     }
-    next();
 }
 
 module.exports = auth_token;

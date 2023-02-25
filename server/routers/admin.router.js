@@ -2,7 +2,6 @@ const router = require('express').Router();
 const fs = require('fs');
 const upload = require('../utils/fileUpload.util');
 
-const pool = require('../database/config/db');
 const Products = require('../models/products.model');
 
 router.route('/api/dropDB').get((req, res) => {
@@ -23,6 +22,11 @@ router.route('/api/createUserTable').get((req, res) => {
 router.route('/api/createProductsTable').get((req, res) => {
     require('../database/scripts/createProductsTable');
     res.status(200).json({status: "success", data: null});
+});
+
+router.route('/api/getProducts').get(async(req, res) => {
+    const data = await Products.getProducts();
+    res.status(200).json({status: "success", data: data});
 });
 
 router.route('/api/addProducts').post(upload ,(req, res) => {

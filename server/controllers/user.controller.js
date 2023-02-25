@@ -22,7 +22,7 @@ const signIn = async(req, res) => {
         return res.status(401).json({status: "error", data: "incorrect password or contact number"});
     }
     
-    const token = jwt.sign({username: Customer_Name, email: Email, contact }, 'secret key', { expiresIn: '1day' });
+    const token = jwt.sign({username: Customer_Name, email: Email, contact }, jwt_key, { expiresIn: jwt_expire });
     
     return res
     .status(200)

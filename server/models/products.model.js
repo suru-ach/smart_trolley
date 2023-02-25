@@ -16,12 +16,12 @@ class Products {
         });
     }
 
-    async getProducts() {
+    static async getProducts() {
         const [data, _] = await pool.execute('SELECT * FROM all_products');
         return data;
     }
 
-    async deleteProducts() {
+    static async deleteProducts() {
         await pool.execute(`DELETE FROM all_products`);
     }
 }
