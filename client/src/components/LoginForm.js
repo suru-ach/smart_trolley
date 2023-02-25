@@ -15,6 +15,25 @@ const setLocalStorage = (data) => {
 }
 
 export default function LoginForm() {
+    useEffect(() => {
+        function loginUser() {
+            const phone = document.getElementById('phone').value;
+            const password = document.getElementById('password').value;
+            fetch(
+                `http://localhost:8000/login?phone=${phone}&password=${password}`,
+                {
+                    headers: {
+                        'Access-Control-Allow-Origin': '*'
+                    }
+                }
+
+            )
+                .then((response) => {
+                    // console.log(response);
+                    if (response.status == 205) {
+                        const loggedCookie = { user: phone, loggedIn: true };
+                        document.cookie = JSON.stringify(loggedCookie);
+                        window.location.replace('http://localhost:3000/landingPage')
 
     const [contact, setContact] = useState('');
     const [password, setPassword] = useState('');

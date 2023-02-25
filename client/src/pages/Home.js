@@ -1,6 +1,6 @@
 import { Button, DarkThemeToggle, } from "flowbite-react";
 import { useTheme, useThemeMode, } from "flowbite-react";
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "../components/Navbar";
 import CarouselComponent from "../components/Carousel";
 import CardComponent from "../components/Card";
@@ -30,10 +30,14 @@ export default function Home() {
                     </div>
                 </div>
 
-                <div className="mt-10">
-                    <FooterComponent></FooterComponent>
-                </div>
-            </React.Fragment>
-        </>
-    )
+                    <div className="mt-10">
+                        <FooterComponent></FooterComponent>
+                    </div>
+                </React.Fragment>
+            </>
+        )
+    }
+    else{
+        window.location.replace("http://localhost:3000/")
+    }
 }
