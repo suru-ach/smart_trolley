@@ -26,9 +26,9 @@ export default function LoginForm() {
         e.preventDefault();
         setDisabled(true);
         setMessage('loading...');
-
+console.log(process.env.REACT_APP_SERVER_URL);
         try {
-            const data = await axios.post('/api/signin',{ contact, password });
+            const data = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api/signin`,{ contact, password });
             if(data.status === 200) {
                 setMsgColor(msgColors.success);
                 setMessage(data.data.data);

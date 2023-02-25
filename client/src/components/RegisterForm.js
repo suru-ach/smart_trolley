@@ -30,7 +30,7 @@ export default function RegisterForm() {
         setMessage('loading...');
 
         try {
-            const data = await axios.post('/api/signup',{ contact, password, email, username});
+            const data = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api/signup`,{ contact, password, email, username});
             if(data.status === 201) {
                 setMsgColor(msgColors.success);
                 setMessage(data.data.data);
