@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 const secrets = {
     host: process.env.HOST,
     port: process.env.PORT,

@@ -30,14 +30,10 @@ export default function Home() {
                     </div>
                 </div>
 
-                    <div className="mt-10">
-                        <FooterComponent></FooterComponent>
-                    </div>
-                </React.Fragment>
-            </>
-        )
-    }
-    else{
-        window.location.replace("http://localhost:3000/")
-    }
+                <div className="mt-10">
+                    <FooterComponent></FooterComponent>
+                </div>
+            </React.Fragment>
+        </>
+    )
 }

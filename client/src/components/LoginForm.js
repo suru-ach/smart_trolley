@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
@@ -9,32 +9,12 @@ const msgColors = {
 }
 
 const setLocalStorage = (data) => {
-    for(const key in data) {
+    for (const key in data) {
         window.localStorage.setItem(key, data[key]);
     }
 }
 
 export default function LoginForm() {
-    useEffect(() => {
-        function loginUser() {
-            const phone = document.getElementById('phone').value;
-            const password = document.getElementById('password').value;
-            fetch(
-                `http://localhost:8000/login?phone=${phone}&password=${password}`,
-                {
-                    headers: {
-                        'Access-Control-Allow-Origin': '*'
-                    }
-                }
-
-            )
-                .then((response) => {
-                    // console.log(response);
-                    if (response.status == 205) {
-                        const loggedCookie = { user: phone, loggedIn: true };
-                        document.cookie = JSON.stringify(loggedCookie);
-                        window.location.replace('http://localhost:3000/landingPage')
-
     const [contact, setContact] = useState('');
     const [password, setPassword] = useState('');
     const [disabled, setDisabled] = useState(false);
@@ -45,10 +25,10 @@ export default function LoginForm() {
         e.preventDefault();
         setDisabled(true);
         setMessage('loading...');
-console.log(process.env.REACT_APP_SERVER_URL);
+        console.log(process.env.REACT_APP_SERVER_URL);
         try {
-            const data = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api/signin`,{ contact, password });
-            if(data.status === 200) {
+            const data = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api/signin`, { contact, password });
+            if (data.status === 200) {
                 setMsgColor(msgColors.success);
                 setMessage(data.data.data);
                 setLocalStorage(data.data.userInfo);
@@ -60,7 +40,7 @@ console.log(process.env.REACT_APP_SERVER_URL);
                     window.location = '/landingpage';
                 }, 1000);
             }
-        } catch(err) {
+        } catch (err) {
             setMsgColor(msgColors.error);
             setMessage(err.response.data.data);
             setTimeout(() => {
@@ -68,13 +48,13 @@ console.log(process.env.REACT_APP_SERVER_URL);
                 setMessage('');
             }, 2000);
         }
-        
+
     }
-    
+
     return (
         <>
             <div className='bg-slate-200 w-full h-screen flex justify-center'>
-                <div className='bg-white p-12 w-full sm:w-1/2 sm:my-12 md:max-w-[500px]'>
+                <div className='bg-slate-400 rounded-lg p-12 w-full sm:w-1/2 sm:my-12 md:max-w-[500px]'>
                     <div className='text-xl font-bold'>Login Form</div>
                     <form className='flex flex-col justify-center h-full' onSubmit={(e) => sendValues(e)}>
                         <div className='mb-6 mt-4'>
@@ -95,3 +75,4 @@ console.log(process.env.REACT_APP_SERVER_URL);
         </>
     )
 }
+    
