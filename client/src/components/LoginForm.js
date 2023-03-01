@@ -38,7 +38,7 @@ export default function LoginForm() {
                 setTimeout(() => {
                     setMessage('');
                     setDisabled(false);
-                    window.location = '/landingpage';
+                    window.location = '/cart';
                 }, 1000);
             }
         } catch(err) {
