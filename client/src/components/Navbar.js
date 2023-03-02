@@ -1,12 +1,19 @@
-import React, { useEffect } from "react";
-import { Dropdown, Navbar, Avatar, DarkThemeToggle, Button, } from "flowbite-react";
+import React, { useEffect,useState } from "react";
+import { Dropdown, Navbar, Avatar, Button } from "flowbite-react";
+import Loadingcomponent from './Loading';
 
 export default function NavbarComponent() {
+   
+   
+    const [ShowLoading, setShowLoading] = useState(false);
+   
     useEffect(() => {
+       
         function userLogout() {
             window.location.replace("http://localhost:3000/");
             document.cookie = `${document.cookie}; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`
         }
+        document.getElementById('signOut-btn').addEventListener('click', () => { setShowLoading(true) })
         document.getElementById('signOut-btn').addEventListener('click', userLogout)
     })
     return (
@@ -74,6 +81,7 @@ export default function NavbarComponent() {
 
                 </Navbar.Collapse>
             </Navbar>
+            {ShowLoading && <Loadingcomponent url={"/"} emassage={"Loging out"}></Loadingcomponent>}
         </>
     );
 }

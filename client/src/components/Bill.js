@@ -1,6 +1,9 @@
 import { Card,Table } from "flowbite-react";
 
 export default function BillComponent() {
+
+        
+    
     return (
         <>
             <Table hoverable={true}>

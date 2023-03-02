@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Label, TextInput, Checkbox, Button, Modal, DarkThemeToggle, Flowbite } from 'flowbite-react';
+import Loadingcomponent from './Loading';
 
 export default function Newregistrationcomponent() {
+    const [ShowLoading, setShowLoading] = useState(false);
+    useEffect(() => {
+        document.getElementById('submit-form').addEventListener('click', () => { setShowLoading(true) })
+    }, []);
     return (
         <>
             <React.Fragment>
@@ -91,7 +96,7 @@ export default function Newregistrationcomponent() {
                                 <a
                                     href="/"
                                 >
-                                    <Button>
+                                    <Button id='submit-form'>
                                         Create account
                                     </Button>
                                     </a>
@@ -100,6 +105,7 @@ export default function Newregistrationcomponent() {
                         </Modal.Body>
                     </Modal>
                 </div>
+                {ShowLoading && <Loadingcomponent url={"/"} emassage={"Please login"}></Loadingcomponent>}
             </React.Fragment>
         </>
     )

@@ -1,44 +1,17 @@
-import React, { useEffect } from "react";
-import Newregistration from "./Newregister";
-import { json, Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
 import { Label, TextInput, Button, Modal } from 'flowbite-react';
+import Loadingcomponent from "./Loading";
 
 export default function LoginForm() {
+    const [ShowLoading, setShowLoading] = useState(false);
+    const [ShowLoadings, setShowLoadings] = useState(false);
     useEffect(() => {
-        function loginUser() {
-            const phone = document.getElementById('phone').value;
-            const password = document.getElementById('password').value;
-            fetch(
-                `http://localhost:8000/login?phone=${phone}&password=${password}`,
-                {
-                    headers: {
-                        'Access-Control-Allow-Origin': '*'
-                    }
-                }
-
-            )
-                .then((response) => {
-                    // console.log(response);
-                    if (response.status == 205) {
-                        const loggedCookie = { user: phone, loggedIn: true };
-                        document.cookie = JSON.stringify(loggedCookie);
-                        window.location.replace('http://localhost:3000/landingPage')
-
-                    }
-                    else if (response.status == 203) {
-                        alert("Incorrect Credentials Please try agian!")
-                        window.location.reload()
-
-                    }
-                    else {
-                        alert("User not found! Please Register")
-                        window.location.reload()
-                    }
-                })
-        }
-        document.getElementById('submit-login').addEventListener('click', loginUser)
-    });
-
+        document.getElementById('submit-login').addEventListener('click', () => { setShowLoading(true) })
+    }, []);
+    useEffect(() => {
+        document.getElementById('newreg').addEventListener('click', () => { setShowLoadings(true) })
+    }, []);
+    console.log(ShowLoading);
     return (
         <>
             <React.Fragment>
@@ -80,7 +53,7 @@ export default function LoginForm() {
                                 />
                             </div>
                             <div className="flex justify-between">
-                                <a
+                                <a 
                                     href="/modal"
                                     className="text-sm text-blue-700 hover:underline dark:text-blue-500"
                                 >
@@ -88,24 +61,19 @@ export default function LoginForm() {
                                 </a>
                             </div>
                             <div className="w-full">
-                                <Link to="">
-                                    <Button id="submit-login">
-                                        Log in to your account
-                                    </Button>
-                                </Link>
+                                <Button id="submit-login">
+                                    Log in to your account
+                                </Button>
                             </div>
-                            <div className="text-sm font-medium text-gray-500 dark:text-gray-300">
-                                Not registered?{' '}
-                                <a
-                                    href="/newregistration"
-                                    className="text-blue-700 hover:underline dark:text-blue-500"
-                                >
-                                    Create account
-                                </a>
+                            <div  className="text-sm font-medium text-gray-500 dark:text-gray-300" >
+                                <span  id="newreg" className="text-blue-700 hover:underline dark:text-blue-500"
+                                > Not registered? Create account</span>
                             </div>
                         </div>
                     </Modal.Body>
                 </Modal>
+                {ShowLoading && <Loadingcomponent url={"/landingpage"} emassage={"Getting Ready"}></Loadingcomponent>}
+                {ShowLoadings && <Loadingcomponent url={"/newregistration"} emassage={"Registering form"}></Loadingcomponent>}
             </React.Fragment>
         </>
     )

@@ -9,8 +9,8 @@ import { Navigate } from "react-router-dom";
 
 
 export default function Home() {
-    const Loggedcookie = JSON.parse(document.cookie).loggedIn;
-    if (Loggedcookie) {
+    // const Loggedcookie = JSON.parse(document.cookie).loggedIn;
+    // if (Loggedcookie) {
 
         return (
             <>
@@ -40,7 +40,7 @@ export default function Home() {
             </>
         )
     }
-    else{
-        window.location.replace("http://localhost:3000/")
-    }
-}
+    // else{
+    //     window.location.replace("http://localhost:3000/")
+    // }
+

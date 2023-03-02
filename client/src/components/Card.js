@@ -6,13 +6,13 @@ export default function CardComponent() {
             <div className="mx-24 ">
                 <Card
                     horizontal={true}
-                    imgSrc="https://flowbite.com/docs/images/blog/image-4.jpg"
+                    imgSrc="./Images/deals.png" 
                 >
                     <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                        Noteworthy technology acquisitions 2021
+                        Fire Deals
                     </h5>
                     <p className="font-normal text-gray-700 dark:text-gray-400">
-                        Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.
+                        Who else wants to look great on the beach this summer? For 24 hours, our VIP text subscribers can get 15% off all home gym equipment.
                     </p>
                 </Card>
             </div>

@@ -10,10 +10,10 @@ export default function About() {
             <Navbar></Navbar>
             <DarkThemeToggle className="sticky top-[90vh]"></DarkThemeToggle>
             <div className="h-full relative w-full color.blue bg-East bay w-[80%] m-auto">
-                <div>
+                <div className={`w-[85%] m-auto`}>
                     <Instruction></Instruction>
                 </div>
-                <div>
+                <div className={`w-[85%] m-auto`}>
                     <Doubtcomponent></Doubtcomponent>
                 </div>
             </div>

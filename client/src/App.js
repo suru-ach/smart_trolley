@@ -7,6 +7,7 @@ import About from './pages/About';
 import Cart from './pages/Cart';
 import Previous from './pages/Previous';
 import Newregistrationcomponent from './components/Newregister';
+import Loading from './components/Loading';
 
 function App() {
   const theme = useTheme().theme.button
