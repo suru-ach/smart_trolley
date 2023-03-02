@@ -6,6 +6,7 @@ import CarouselComponent from "../components/Carousel";
 import CardComponent from "../components/Card";
 import FooterComponent from "../components/Footer";
 import { Navigate } from "react-router-dom";
+import Carscommponent from "../components/cars";
 
 
 export default function Home() {
@@ -15,15 +16,14 @@ export default function Home() {
         return (
             <>
                 <React.Fragment>
-                    <Navbar></Navbar>
+                    <Navbar className="my-0"></Navbar>
                     <DarkThemeToggle className="sticky top-[90vh]"></DarkThemeToggle>
-                    <div className={`w-[85%] m-auto`}>
+                    <div className={`p-0 my-0`}>
 
                         <CarouselComponent></CarouselComponent>
+                        <Carscommponent></Carscommponent>
                         <h2 className="text-4xl text-center m-20">Deals</h2>
-                        <div className="overflow-x-scroll flex mx-0">
-                            <CardComponent></CardComponent>
-                            <CardComponent></CardComponent>
+                        <div className="overflow-x-scroll flex space-x-5 ">
                             <CardComponent></CardComponent>
                             <CardComponent></CardComponent>
                             <CardComponent></CardComponent>
