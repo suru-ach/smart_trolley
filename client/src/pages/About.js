@@ -13,7 +13,7 @@ export default function About() {
                 <div className={`w-[85%] m-auto`}>
                     <Instruction></Instruction>
                 </div>
-                <div className={`w-[85%] m-auto`}>
+                <div id="feedback"className={`w-[85%] m-auto`}>
                     <Doubtcomponent></Doubtcomponent>
                 </div>
             </div>

@@ -21,7 +21,7 @@ export default function Home() {
 
                         <CarouselComponent></CarouselComponent>
                         <h2 className="text-4xl text-center m-20">Deals</h2>
-                        <div className="overflow-x-scroll flex">
+                        <div className="overflow-x-scroll flex mx-0">
                             <CardComponent></CardComponent>
                             <CardComponent></CardComponent>
                             <CardComponent></CardComponent>

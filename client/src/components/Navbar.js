@@ -22,7 +22,7 @@ export default function NavbarComponent() {
                 fluid={true}
                 rounded={true}
             >
-                <Navbar.Brand href="https://flowbite.com/">
+                <Navbar.Brand href="/landingpage">
                     <img
                         src="./Images/Mypr.png"
                         className="mr-3 h-6 sm:h-9"
@@ -43,17 +43,15 @@ export default function NavbarComponent() {
                                 Bonnie Green
                             </span>
                             <span className="block truncate text-sm font-medium">
-                                name@flowbite.com
+                                name@.gmailcom
                             </span>
                         </Dropdown.Header>
                         <Dropdown.Item>
-                            Dashboard
+                            <a href="landingpage" > Dashboard</a>
+                           
                         </Dropdown.Item>
                         <Dropdown.Item>
-                            Settings
-                        </Dropdown.Item>
-                        <Dropdown.Item>
-                            Earnings
+                           <a href="about">feedback</a> 
                         </Dropdown.Item>
                         <Dropdown.Divider />
                         <Dropdown.Item>

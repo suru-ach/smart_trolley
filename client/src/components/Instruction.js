@@ -7,7 +7,7 @@ export default function Instructioncomponent() {
             <div>
                 <p class="text-3xl">Follow the Instruction </p>
             </div>
-            <div class="grid mb-8 border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 md:mb-12 md:grid-cols-2">
+            <div class="grid mb-8 border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 md:mb-13 md:grid-cols-2">
                 <figure class="flex flex-col items-center justify-center p-8 text-center bg-white border-b border-gray-200 rounded-t-lg md:rounded-t-none md:rounded-tl-lg md:border-r dark:bg-gray-800 dark:border-gray-700">
                     <blockquote class="max-w-2xl mx-auto mb-4 text-gray-500 lg:mb-8 dark:text-gray-400">
                         <h3 class="text-lg font-semibold text-gray-900 dark:text-white">STEP1</h3>

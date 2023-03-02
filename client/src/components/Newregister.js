@@ -105,7 +105,7 @@ export default function Newregistrationcomponent() {
                         </Modal.Body>
                     </Modal>
                 </div>
-                {ShowLoading && <Loadingcomponent url={"/"} emassage={"Please login"}></Loadingcomponent>}
+                {ShowLoading && <Loadingcomponent url={"/"} emassage={"Registration complete"}></Loadingcomponent>}
             </React.Fragment>
         </>
     )
