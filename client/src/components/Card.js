@@ -3,7 +3,7 @@ import { Card } from "flowbite-react";
 export default function CardComponent() {
     return (
         <>
-            <div className="mx-10  h-15 w-15">
+            <div className=" lg:mx-24 sm:mx-10  h-15 w-15">
                 <Card
                     horizontal={true}
                     imgSrc="./Images/deals.png" 
