@@ -26,6 +26,9 @@ app.use(userRouter);
 app.use(billRouter);
 app.use(auth_token, adminRouter);
 
+app.get('/', (req,res)=>{
+    res.send("Live")
+})
 app.listen(port , () => {
     console.log(`port ${port}`);
 });
