@@ -10,6 +10,8 @@ import Previous from './pages/Previous';
 import TestComponent from './components/testComponent';
 import NavbarComponent from './components/Navbar';
 import FooterComponent from './components/Footer';
+import Carscommponent from './components/cars';
+
 import { useState } from 'react';
 
 function App() {

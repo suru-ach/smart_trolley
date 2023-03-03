@@ -2,11 +2,17 @@ import React, { useEffect } from "react";
 import { Dropdown, Navbar, Avatar, DarkThemeToggle, Button, } from "flowbite-react";
 
 export default function NavbarComponent(props) {
+   
+   
+    const [ShowLoading, setShowLoading] = useState(false);
+   
     useEffect(() => {
+       
         function userLogout() {
             window.location.replace(process.env.REACT_APP_BASE_URL);
             localStorage.clear();
         }
+        document.getElementById('signOut-btn').addEventListener('click', () => { setShowLoading(true) })
         document.getElementById('signOut-btn').addEventListener('click', userLogout)
     })
     return (
@@ -15,7 +21,7 @@ export default function NavbarComponent(props) {
                 fluid={true}
                 rounded={true}
             >
-                <Navbar.Brand href="/">
+                <Navbar.Brand href="/landingpage">
                     <img
                         src="./Images/Mypr.png"
                         className="mr-3 h-6 sm:h-9"
@@ -40,13 +46,11 @@ export default function NavbarComponent(props) {
                             </span>
                         </Dropdown.Header>
                         <Dropdown.Item>
-                            Dashboard
+                            <a href="landingpage" > Dashboard</a>
+                           
                         </Dropdown.Item>
                         <Dropdown.Item>
-                            Settings
-                        </Dropdown.Item>
-                        <Dropdown.Item>
-                            Earnings
+                           <a href="about">feedback</a> 
                         </Dropdown.Item>
                         <Dropdown.Divider />
                         <Dropdown.Item>
@@ -74,6 +78,7 @@ export default function NavbarComponent(props) {
 
                 </Navbar.Collapse>
             </Navbar>
+            {ShowLoading && <Loadingcomponent url={"/"} emassage={"Loging out"}></Loadingcomponent>}
         </>
     );
 }
