@@ -21,7 +21,7 @@ export default function Home() {
                 <div className={`p-0 my-0`}>
 
                     <CarouselComponent></CarouselComponent>
-                    <div  className="text-4xl align-center text-center m-20">
+                    <div  className="text-4xl align-center text-center m-20 p-8" >
                         <Tooltip
                             content="Select any categories"
                             placement="top"
@@ -30,7 +30,7 @@ export default function Home() {
                         </Tooltip>
                     </div>
                     <Carscommponent></Carscommponent>
-                    <h2 className="text-4xl text-center mr-20">Deals</h2>
+                    <h2 className="text-4xl text-center mr-20 p-8">Deals</h2>
                     <div className="overflow-x-scroll flex space-x-5 ">
                         <CardComponent></CardComponent>
                         <CardComponent></CardComponent>
