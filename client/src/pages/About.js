@@ -8,7 +8,7 @@ export default function About() {
     return (
         <>
             <DarkThemeToggle className="sticky top-[90vh]"></DarkThemeToggle>
-            <div className="h-full relative w-full color.blue bg-East bay w-[80%] m-auto">
+            <div className="h-full relative color.blue bg-East bay w-[80%] m-auto">
                 <div>
                     <Instruction></Instruction>
                 </div>

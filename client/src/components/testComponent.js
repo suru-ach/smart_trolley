@@ -10,7 +10,7 @@ export default function TestComponent() {
     function submit_form(e){
         e.preventDefault();
         const barcode = document.getElementById('barcode').value;
-        axios.post("http://localhost:8000/api/addToBill", {"barcode":barcode, "phone":phone})   
+        axios.post(`${process.env.REACT_APP_SERVER_URL}/api/addToBill`, {"barcode":barcode, "phone":phone})   
     }
 
 
