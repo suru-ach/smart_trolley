@@ -5,6 +5,7 @@ const User = require("../models/user.model");
 const { jwt_key, jwt_expire } = require('../utils/secret.utils');
 
 const signIn = async(req, res) => {
+    console.log("test");
     const { username, contact, password, email } = req.body;
     if(!contact || !password) {
         return res.status(401).json({status: "error", data: "invalid credentials"});
@@ -27,7 +28,7 @@ const signIn = async(req, res) => {
     return res
     .status(200)
     .cookie("user_access_token", token, { httpOnly: true })
-    .json({status: "success", data: "logged in successful", userInfo: { username: Customer_Name, contact, email: Email }});
+    .json({status: "success", data: "logged in successful", userInfo: { Customer_Name, contact, Email }});
 }
 
 const signUp = async(req, res) => {

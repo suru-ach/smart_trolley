@@ -7,9 +7,6 @@ class Products {
         this.product_name = product_name;
         this.cost = cost;
     }
-    constructor(barcode){
-        this.barcode = barcode;
-    }
 
     async addProduct(){
         await pool.execute(`INSERT INTO all_products(Product_ID, Product_Name, Cost) VALUES('${this.barcode}','${this.product_name}','${this.cost}',)`)
@@ -27,10 +24,6 @@ class Products {
     async getProducts() {
         const [data, _] = await pool.execute('SELECT * FROM all_products');
         return data;
-    }
-
-    async deleteProduct() {
-        await pool.execute(`DELETE FROM all_products WHERE Product_ID = ${this.barcode}`);
     }
 }
 
