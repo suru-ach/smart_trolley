@@ -3,15 +3,14 @@ import React, { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import BillComponent from "../components/Bill";
 import FooterComponent from "../components/Footer";
-import { useState } from "react";
 import QRScannerComponent from "../components/QRScanner";
 const { io } = require("socket.io-client");
 const socket = io(`${process.env.REACT_APP_SOCKET_URL}:5000`);
 export default function Cart() {
-    const [ShowAlert, setShowAlert] = useState(false);
-    useEffect(() => {
-        document.getElementById('check-btn').addEventListener('click', () => { setShowAlert(true) })
-    }, []);
+    // const [ShowAlert, setShowAlert] = useState(false);
+    // useEffect(() => {
+    //     document.getElementById('check-btn').addEventListener('click', () => { setShowAlert(true) })
+    // }, []);
 
 
     const [BillItems, setBillItems] = useState([]);
@@ -36,18 +35,17 @@ export default function Cart() {
             <div className="h-full relativecolor.blue bg-East bay w-[85%] m-auto">
                 <div className="w-[90%] m-auto">
                     <QRScannerComponent></QRScannerComponent>
-                    <BillComponent BillItems={BillItems}></BillComponent>
-                    <div className="hover:mt-2 py-5 flex justify-center">
+                    <div my-5>
+                        <BillComponent BillItems={BillItems}></BillComponent>
+                    </div>
+                    {/* <div className="hover:mt-2 py-5 flex justify-center">
                         <button id="check-btn" type="button" class="inline-flex items-center py-3.5 px-6 text-xs font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800">
                             Checkout
                         </button>
-                    </div>
+                    </div> */}
                 </div>
             </div>
-            <div>
-                <FooterComponent></FooterComponent>
-            </div>
-            {ShowAlert && <Alertcomponent></Alertcomponent>}
+            {/* {ShowAlert && <Alertcomponent></Alertcomponent>} */}
 
         </>
     )

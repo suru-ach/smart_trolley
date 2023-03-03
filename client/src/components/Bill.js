@@ -1,13 +1,19 @@
 import { Button, Table } from "flowbite-react";
-import { useEffect } from "react";
-
+import { useEffect,useState } from "react";
+import Alertcomponent from "./Alert";
 
 export default function BillComponent({ BillItems }) {
+    const [ShowAlert, setShowAlert] = useState(false);
     useEffect(() => {
         document.getElementById('form').addEventListener('submit', (e) => {
             e.preventDefault();
         })
     })
+    useEffect(() => {
+        document.getElementById('checkout-btn').addEventListener('click', () => { setShowAlert(true) })
+    }, []);
+
+
     return (
         BillItems && (<>
             <form id="form" method="post">
@@ -69,6 +75,7 @@ export default function BillComponent({ BillItems }) {
                     Checkout
                 </button>
             </div>
+            {ShowAlert && <Alertcomponent></Alertcomponent>}
         </>)
     )
 }

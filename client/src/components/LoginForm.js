@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect} from 'react';
+import {Modal,Label,TextInput,Button } from 'flowbite-react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import Loadingcomponent from './Loading';
+
 
 const msgColors = {
     success: 'text-green-500',
@@ -9,6 +11,7 @@ const msgColors = {
 }
 
 export default function LoginForm({props}) {
+    const[Disabled,setDisabled]=useState(false)
     const [contact, setContact] = useState('');
     const [password, setPassword] = useState('');
     const [ShowLoading, setShowLoading] = useState(false);

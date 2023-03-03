@@ -10,14 +10,14 @@ export default function Alertcomponent() {
 
     <>
       <React.Fragment>
-        
-         
-       
+
+
+
         <Modal
           show={true}
           size="md"
           popup={true}
-          
+
         >
           <Modal.Header />
           <Modal.Body>

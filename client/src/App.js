@@ -6,12 +6,10 @@ import RegisterForm from './components/RegisterForm';
 import Home from './pages/Home';
 import About from './pages/About';
 import Cart from './pages/Cart';
-import Previous from './pages/Previous';
 import TestComponent from './components/testComponent';
 import NavbarComponent from './components/Navbar';
 import FooterComponent from './components/Footer';
-import Carscommponent from './components/cars';
-
+import Previouscomponent from './pages/Previous';
 import { useState } from 'react';
 
 function App() {
@@ -32,7 +30,7 @@ function App() {
               <Route path='/landingPage' element={<Home />} />
               <Route path='/about' element={<About />} />
               <Route path='/cart' element={<Cart />} />
-              <Route path='/previousbill' element={<Previous />} />
+              <Route path='/previousbills' element={<Previouscomponent />} />
               <Route path='/newbill' element={<TestComponent />} />
             </Routes>
             {ShowComponents && (

@@ -1,5 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useEffect ,useState} from "react";
 import { Dropdown, Navbar, Avatar, DarkThemeToggle, Button, } from "flowbite-react";
+import Loadingcomponent from "./Loading";
 
 export default function NavbarComponent(props) {
    
