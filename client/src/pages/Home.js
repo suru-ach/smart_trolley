@@ -7,12 +7,9 @@ import CardComponent from "../components/Card";
 import FooterComponent from "../components/Footer";
 
 export default function Home() {
-
-
     return (
         <>
             <React.Fragment>
-                <Navbar></Navbar>
                 <DarkThemeToggle className="sticky top-[90vh]"></DarkThemeToggle>
                 <div className={`w-[85%] m-auto`}>
                     {/* <Button id="ws-btn" onClick={connectWs}>Create Connection to WebSocket</Button> */}
@@ -28,10 +25,6 @@ export default function Home() {
                         <CardComponent></CardComponent>
                         <CardComponent></CardComponent>
                     </div>
-                </div>
-
-                <div className="mt-10">
-                    <FooterComponent></FooterComponent>
                 </div>
             </React.Fragment>
         </>

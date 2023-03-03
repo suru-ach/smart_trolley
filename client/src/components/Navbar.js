@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 import { Dropdown, Navbar, Avatar, DarkThemeToggle, Button, } from "flowbite-react";
 
-export default function NavbarComponent() {
+export default function NavbarComponent(props) {
     useEffect(() => {
         function userLogout() {
-            window.location.replace("http://localhost:3000/");
-            document.cookie = `${document.cookie}; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`
+            window.location.replace(process.env.REACT_APP_BASE_URL);
+            localStorage.clear();
         }
         document.getElementById('signOut-btn').addEventListener('click', userLogout)
     })
@@ -15,7 +15,7 @@ export default function NavbarComponent() {
                 fluid={true}
                 rounded={true}
             >
-                <Navbar.Brand href="https://flowbite.com/">
+                <Navbar.Brand href="/">
                     <img
                         src="./Images/Mypr.png"
                         className="mr-3 h-6 sm:h-9"
@@ -33,10 +33,10 @@ export default function NavbarComponent() {
                     >
                         <Dropdown.Header>
                             <span className="block text-sm">
-                                Bonnie Green
+                                {localStorage.getItem('Customer_Name')}
                             </span>
                             <span className="block truncate text-sm font-medium">
-                                name@flowbite.com
+                                {localStorage.getItem('Email')}
                             </span>
                         </Dropdown.Header>
                         <Dropdown.Item>

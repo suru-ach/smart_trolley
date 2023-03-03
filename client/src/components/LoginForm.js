@@ -14,18 +14,18 @@ const setLocalStorage = (data) => {
     }
 }
 
-export default function LoginForm() {
+export default function LoginForm({props}) {
     const [contact, setContact] = useState('');
     const [password, setPassword] = useState('');
     const [disabled, setDisabled] = useState(false);
     const [message, setMessage] = useState('');
     const [msgcolor, setMsgColor] = useState('');
+    props.setShowComponents(false);
 
     const sendValues = async (e) => {
         e.preventDefault();
         setDisabled(true);
         setMessage('loading...');
-        console.log(process.env.REACT_APP_SERVER_URL);
         try {
             const data = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api/signin`, { contact, password });
             if (data.status === 200) {
@@ -37,6 +37,7 @@ export default function LoginForm() {
                 setTimeout(() => {
                     setMessage('');
                     setDisabled(false);
+                    props.setShowComponents(true)
                     window.location = '/landingpage';
                 }, 1000);
             }
@@ -75,4 +76,3 @@ export default function LoginForm() {
         </>
     )
 }
-    
