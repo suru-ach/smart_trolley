@@ -17,15 +17,22 @@ async function socket(io) {
         });
         
         socket.on('deleteItem', async (data) => {
-            const { user_bill } = users_socket.get(data.contact);
-            // delete item //
+            const { productCode, productID, contact } = data;
+            const { user_bill } = users_socket.get(contact);
+            user_bill.items = user_bill.items.filter(item => item.productCode !== productCode || item.productID !== productID);
             socket.emit('message', { status: "success", data: `deleted`});
+        });
+        
+        socket.on('get-items' , async (data) => {
+            const { user_bill } = users_socket.get(data.contact);
+            socket.emit('add-items', { status: "success", data: user_bill.items });
         });
         
         socket.on('bill', async (data) => {
             const { user_bill } = users_socket.get(data.contact);
             const res = await user_bill.checkoutBill();
             if(res) {
+                users_socket.delete(data.contact);
                 socket.emit('message', { status: "success", data: `checked out`});
             } else {
                 socket.emit('message', { status: "error", data: `could not check out`});
@@ -44,19 +51,18 @@ async function socket(io) {
  // });
 
 const addProduct = async (req, res) => {
-    const { contact, productID } = req.body;
+    const { contact, productID, productCode } = req.body;
+    
     const product_data = await Products.getProduct(productID);
     
     try {
         const { user_bill, socket } = users_socket.get(contact);
-        const data = await user_bill.addItem(product_data[0]);
+        const data = await user_bill.addItem({ productCode, ...product_data[0] });
     } catch(err) {
         console.log(err);
     }
 
-    
     // socket.emit('message', { status: "success", data: "data"});
-
 };
 
 module.exports = { socket, addProduct }

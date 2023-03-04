@@ -8,10 +8,11 @@ const sql_generate = (transaction_id, contact, items) => {
         Product_Name,
         Cost)
         VALUES`;
-    const sql_insert = items.map((item) => {
-        const { Product_Name, Cost } = item;
-        return `(${transaction_id},'${contact}','${new Date().toISOString().slice(0,10)}','${Product_Name}',${Cost})`;
-    }).join(',')+';';
+    const sql_insert = items
+        .map(({ Product_Name, Cost }) => {
+            return `(${transaction_id},'${contact}','${new Date().toISOString().slice(0,10)}','${Product_Name}',${Cost})`;
+        })
+        .join(',')+';';
     return prefix+sql_insert;
 }
 
@@ -27,13 +28,17 @@ class Bill {
     }
 
     async addItem(product) {
-        this.items.push(product);
+        // deletes if scanned twice
+        const product_exists = this.items.find(item => item.productCode === product.productCode && item.productID === product.productID);
+        if(!product_exists) {
+            this.items.push(product);
+        }
         return this.items;
     }
 
     async getIdNo() {
         try {   
-            const [transaction_value, _] = await pool.execute(`SELECT MAX(Transaction_No) FROM all_bills WHERE Contact_Number=${this.contact}`);
+            const [transaction_value, _] = await pool.execute(`SELECT MAX(Transaction_No) FROM all_bills WHERE Contact_Number=${this.contact};`);
             const [_key, transaction_id] = Object.entries(transaction_value[0])[0];
             return transaction_id === null ? 1 : transaction_id+1;
         } catch(err) {
@@ -55,6 +60,8 @@ class Bill {
     
     async getBill(transaction_number) {
         // get bill
+        const [data, _] = await pool.execute(`SELECT * FROM all_bills WHERE Contact_Number=${this.contact} AND Transaction_No=${transaction_number};`);
+        return data;
     }
 
 }
