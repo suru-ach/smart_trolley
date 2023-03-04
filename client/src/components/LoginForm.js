@@ -38,7 +38,7 @@ export default function LoginForm({props}) {
                     setMessage('');
                     setDisabled(false);
                     props.setShowComponents(true)
-                    window.location = '/landingpage';
+                    window.location = '/landingPage';
                 }, 1000);
             }
         } catch (err) {
