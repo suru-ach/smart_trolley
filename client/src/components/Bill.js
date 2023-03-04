@@ -1,11 +1,20 @@
 import { Button, Table } from "flowbite-react";
 import { useEffect } from "react";
-
+import axios from 'axios';
 
 export default function BillComponent({ BillItems }) {
     useEffect(() => {
-        document.getElementById('form').addEventListener('submit', (e) => {
-            e.preventDefault();
+        document.getElementById('checkout-btn').addEventListener('click', () => {
+            axios.post(`${process.env.REACT_APP_SERVER_URL}/api/resetCart`, { cartID: localStorage.getItem('cartID') })
+                .then((data) => {
+                    console.log(data.data.message);
+                    if(data.data.message === "Success"){
+                        localStorage.clear();
+                    }
+                })
+                .catch(err => {
+                    console.log(err);
+                })
         })
     })
     return (

@@ -6,7 +6,7 @@ import FooterComponent from "../components/Footer";
 import { useState } from "react";
 import QRScannerComponent from "../components/QRScanner";
 const { io } = require("socket.io-client");
-const socket = io(`${process.env.REACT_APP_SOCKET_URL}:5000`);
+const socket = io(`${process.env.REACT_APP_SOCKET_URL}`);
 export default function Cart() {
 
     const [BillItems, setBillItems] = useState([]);
