@@ -23,7 +23,7 @@ const signIn = async(req, res) => {
     }
     
     const token = jwt.sign({username: Customer_Name, email: Email, contact }, jwt_key, { expiresIn: jwt_expire });
-    
+
     return res
     .status(200)
     .cookie("user_access_token", token, { httpOnly: true })

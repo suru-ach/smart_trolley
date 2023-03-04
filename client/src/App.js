@@ -7,6 +7,7 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Cart from './pages/Cart';
 import Previous from './pages/Previous';
+import TestComponent from './components/testComponent';
 
 function App() {
   const theme = useTheme().theme.button
@@ -22,6 +23,7 @@ function App() {
             <Route path='/about' element = {<About/>}/>
             <Route path='/cart' element = {<Cart/>}/>
             <Route path='/previousbill' element = {<Previous/>}/>
+            <Route path='/newbill' element = {<TestComponent/>}/>
           </Routes>
         </BrowserRouter>
       </Flowbite>

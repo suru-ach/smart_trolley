@@ -21,9 +21,20 @@ const createProductsTable =
     Sl_No INT PRIMARY KEY AUTO_INCREMENT
 );`
 
+const createBillsTable = 
+`CREATE TABLE all_bills (
+    Transaction_No INT NOT NULL,
+    Contact_Number VARCHAR(100) NOT NULL,
+    Bill_Date DATE NOT NULL,
+    Product_Name VARCHAR(100) NOT NULL,
+    Cost FLOAT NOT NULL,
+    Quantity INT NOT NULL DEFAULT 1
+);`
+
 module.exports = {
     createDB,
     deleteDB,
     createUserTable,
-    createProductsTable
+    createProductsTable,
+    createBillsTable
 };

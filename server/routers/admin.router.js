@@ -24,6 +24,11 @@ router.route('/api/createProductsTable').get((req, res) => {
     res.status(200).json({status: "success", data: null});
 });
 
+router.route('/api/createBillTable').get((req, res) => {
+    require('../database/scripts/createBillTable');
+    res.status(200).json({status: "success", data: null});
+});
+
 router.route('/api/getProducts').get(async(req, res) => {
     const data = await Products.getProducts();
     res.status(200).json({status: "success", data: data});
