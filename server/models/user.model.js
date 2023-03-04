@@ -5,12 +5,12 @@ class User {
     constructor(username, contact, password, email) {
         this.username = username;
         this.password = password;
-        this.contact = parseInt(contact);
+        this.contact = contact;
         this.email = email;
     }
     
     async create() {
-        this.password = await hash(this.password);
+        this.password = await hash(this.password.toString());
         const data = await pool.execute(`
         INSERT INTO customers (Contact_Number,Customer_Name, Email,Password,Sl_No)
         VALUES 
