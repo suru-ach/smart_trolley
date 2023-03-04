@@ -13,13 +13,13 @@ const socket = io.on("connection", (socket) => {
 });
 
 const addProduct = async (req, res) => {
-    const { barcode, phone } = req.body;
-    const product = new BillProduct(barcode, phone);
+    const { barcode, cartID, BillNo } = req.body;
+    const product = new BillProduct(barcode, cartID, BillNo);
     try {
         if (await product.addToBill()) {
             const bill = await product.getAll();
             socket.emit('add-product', JSON.stringify({'payload': bill}))
-            res.send("Product Added to cart")
+            res.status(200).send("Product Added to cart")
         }
     }
     catch (error) {
