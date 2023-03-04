@@ -31,7 +31,7 @@ class Bill {
     }
 
     async getAll() {
-        const result = await pool.execute(`SELECT * FROM all_bills WHERE Phone = '${this.phone}'`)
+        const result = await pool.execute(`SELECT * FROM all_bills WHERE Phone = '${this.Phone}' AND Bill_No = '${this.BillNo}'`)
         return (result[0])
     }
 }

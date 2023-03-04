@@ -35,6 +35,9 @@ export default function QRScannerComponent() {
       const config = { fps: 30, qrbox: { width: 150, height: 150 } };
       html5QrCode.start({ facingMode: "environment" }, config, qrCodeSuccessCallback);
     }
+    else{
+      setShowQRReader(false)
+    }
 
 
   })

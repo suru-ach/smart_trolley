@@ -3,6 +3,9 @@ import { useEffect } from "react";
 import axios from 'axios';
 
 export default function BillComponent({ BillItems }) {
+    function handleDelete(element){
+        console.log(element.id);
+    }
     useEffect(() => {
         document.getElementById('checkout-btn').addEventListener('click', () => {
             axios.post(`${process.env.REACT_APP_SERVER_URL}/api/resetCart`, { cartID: localStorage.getItem('cartID') })
@@ -16,10 +19,11 @@ export default function BillComponent({ BillItems }) {
                     console.log(err);
                 })
         })
+        document.getElementById('form').addEventListener('submit', (e)=>{e.preventDefault()})
     })
     return (
         BillItems && (<>
-            <form id="form" method="post">
+            <form id="form">
                 <Table hoverable={true}>
                     <Table.Head>
                         <Table.HeadCell>
@@ -59,12 +63,14 @@ export default function BillComponent({ BillItems }) {
                                             {item.Amount}
                                         </Table.Cell>
                                         <Table.Cell>
-                                            <Button type="submit"
+                                            <button type="button"
                                                 className="font-medium text-blue-600 hover:underline dark:text-blue-500"
                                                 name={item.Product_ID}
+                                                id={item.Product_ID}
+                                                
                                             >
                                                 Delete
-                                            </Button>
+                                            </button>
                                         </Table.Cell>
                                     </Table.Row>
                                 )
