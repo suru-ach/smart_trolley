@@ -4,16 +4,20 @@ import FooterComponent from "../components/Footer";
 import NavbarComponent from "../components/Navbar";
 
 export default function StoreManagement() {
-    const [ShowAddForm, setShowAddForm] = useState(false);
+    const [ShowSingleForm, setShowSingleForm] = useState(false);
+    const [ShowBulkForm, setShowBulkForm] = useState(false);
     useEffect(() => {
-        document.getElementById('showAddForm').addEventListener('click', () => { setShowAddForm(true) })
+        document.getElementById('ShowSingleForm').addEventListener('click', () => { setShowSingleForm(!ShowSingleForm);setShowBulkForm(false) })
+        document.getElementById('ShowBulkForm').addEventListener('click', () => { setShowBulkForm(!ShowBulkForm);setShowSingleForm(false) })
     })
     return (
         <>
             <NavbarComponent></NavbarComponent>
-            <button id="showAddForm" type="button" class="py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Add Product</button>
+            <button id="ShowSingleForm" type="button" class="py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Add Single Product</button>
+            <button id="ShowBulkForm" type="button" class="py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Add Products in Bulk</button>
 
-            <form className={ShowAddForm ? `` : `hidden`}>
+
+            <form id="singleFrom" className={`${ShowSingleForm ? `` : `hidden`} m-5`}>
 
                 <div class="mb-6">
                     <label for="ProductID" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Product ID</label>
@@ -32,7 +36,10 @@ export default function StoreManagement() {
                 <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
             </form>
 
-
+            <form id="bulkForm" className={`${ShowBulkForm ? `` : `hidden`} m-5`}>
+                <label for={"productsFile"}>Choose file</label>
+                <input className="mx-5" type={"file"} name={"productsFile"} id={"productsFile"}></input>
+            </form>
 
             <div class="relative w-[80%] m-auto overflow-x-auto shadow-md sm:rounded-lg">
                 <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
