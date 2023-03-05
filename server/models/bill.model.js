@@ -1,34 +1,37 @@
 const pool = require('../database/config/db')
 
 class Bill {
-    constructor(barcode, phone) {
+    constructor(barcode, cartID, BillNo) {
         this.barcode = barcode;
-        this.phone = phone;
+        this.BillNo = BillNo;
+        this.cartID = cartID;
+    }
+    async getPhone(){
+        try {
+            const phoneQuery = await pool.execute(`SELECT Phone FROM cart_map WHERE Cart_No = '${this.cartID}'`);
+            this.Phone = phoneQuery[0][0].Phone;
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     async getProduct() {
         const result = await pool.execute(`SELECT Product_Name,Cost FROM all_products WHERE Product_ID = '${this.barcode}'`)
-        // console.log(result[0]);
         return (result[0])
     }
 
     async addToBill() {
-        const product = await this.getProduct(this.barcode, this.phone);
+        const product = await this.getProduct();
+        await this.getPhone();
         if (product) {
-            const date = new Date();
-
-            let day = date.getDate();
-            let month = date.getMonth() + 1;
-            let year = date.getFullYear();
-            let currentDate = (`${year}-${month}-${day}`).toString()
             const { Product_Name, Cost } = product[0];
-            const result = await pool.execute(`INSERT INTO all_bills ( Bill_Date, Phone, Product_ID, Product_Name, Cost, Quantity, Amount) VALUES('${currentDate}','${this.phone}','${this.barcode}','${Product_Name}', '${Cost}', '${1}', '${Cost}')`)
+            const result = await pool.execute(`INSERT INTO all_bills ( Bill_No, Phone, Product_ID, Product_Name, Cost, Quantity) VALUES('${this.BillNo}','${this.Phone}','${this.barcode}','${Product_Name}', '${Cost}', '${1}')`)
             return (result)
         }
     }
 
     async getAll() {
-        const result = await pool.execute(`SELECT * FROM all_bills WHERE Phone = '${this.phone}'`)
+        const result = await pool.execute(`SELECT * FROM all_bills WHERE Phone = '${this.Phone}' AND Bill_No = '${this.BillNo}'`)
         return (result[0])
     }
 }

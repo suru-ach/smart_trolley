@@ -4,13 +4,14 @@ import axios from 'axios';
 
 
 export default function TestComponent() {
-
-    const phone = window.localStorage.getItem('contact');
-    console.log(phone);
-    function submit_form(e){
+    function submit_form(e) {
         e.preventDefault();
         const barcode = document.getElementById('barcode').value;
-        axios.post("http://localhost:8000/api/addToBill", {"barcode":barcode, "phone":phone})   
+        axios.post(`${process.env.REACT_APP_SERVER_URL}/api/addToBill`, {
+            'barcode': barcode,
+            'cartID': localStorage.getItem('cartID'),
+            'BillNo': localStorage.getItem('BillNo')
+        })
     }
 
 

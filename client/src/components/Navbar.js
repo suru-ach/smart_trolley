@@ -1,11 +1,18 @@
-import React, { useEffect } from "react";
+import React, { useEffect ,useState} from "react";
 import { Dropdown, Navbar, Avatar, DarkThemeToggle, Button, } from "flowbite-react";
+import Loadingcomponent from "./Loading";
 
-export default function NavbarComponent() {
+export default function NavbarComponent(props) {
+   
+   
+    const [ShowLoading, setShowLoading] = useState(false);
+   
     useEffect(() => {
+       
         function userLogout() {
-            window.location.replace("http://localhost:3000/");
-            document.cookie = `${document.cookie}; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`
+            setShowLoading(true)
+            window.location.replace(process.env.REACT_APP_BASE_URL);
+            localStorage.clear();
         }
         document.getElementById('signOut-btn').addEventListener('click', userLogout)
     })
@@ -15,7 +22,7 @@ export default function NavbarComponent() {
                 fluid={true}
                 rounded={true}
             >
-                <Navbar.Brand href="https://flowbite.com/">
+                <Navbar.Brand href="/landingpage">
                     <img
                         src="./Images/Mypr.png"
                         className="mr-3 h-6 sm:h-9"
@@ -33,20 +40,18 @@ export default function NavbarComponent() {
                     >
                         <Dropdown.Header>
                             <span className="block text-sm">
-                                Bonnie Green
+                                {localStorage.getItem('Customer_Name')}
                             </span>
                             <span className="block truncate text-sm font-medium">
-                                name@flowbite.com
+                                {localStorage.getItem('Email')}
                             </span>
                         </Dropdown.Header>
                         <Dropdown.Item>
-                            Dashboard
+                            <a href="landingpage" > Dashboard</a>
+                           
                         </Dropdown.Item>
                         <Dropdown.Item>
-                            Settings
-                        </Dropdown.Item>
-                        <Dropdown.Item>
-                            Earnings
+                           <a href="about">feedback</a> 
                         </Dropdown.Item>
                         <Dropdown.Divider />
                         <Dropdown.Item>
@@ -74,6 +79,7 @@ export default function NavbarComponent() {
 
                 </Navbar.Collapse>
             </Navbar>
+            {ShowLoading && <Loadingcomponent url={"/"} emassage={"Loging out"}></Loadingcomponent>}
         </>
     );
 }
