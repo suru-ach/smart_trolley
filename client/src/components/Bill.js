@@ -1,11 +1,13 @@
 import { Button, Table } from "flowbite-react";
-import { useEffect } from "react";
+import { useEffect,useState } from "react";
 import axios from 'axios';
+import Alertcomponent from "./Alert";
 
 export default function BillComponent({ BillItems }) {
     function handleDelete(element){
         console.log(element.id);
     }
+    const [ShowAlert, setShowAlert] = useState(false);
     useEffect(() => {
         document.getElementById('checkout-btn').addEventListener('click', () => {
             axios.post(`${process.env.REACT_APP_SERVER_URL}/api/resetCart`, { cartID: localStorage.getItem('cartID') })
@@ -20,7 +22,9 @@ export default function BillComponent({ BillItems }) {
                 })
         })
         document.getElementById('form').addEventListener('submit', (e)=>{e.preventDefault()})
+        document.getElementById('checkout-btn').addEventListener('click', () => { setShowAlert(true) })
     })
+
     return (
         BillItems && (<>
             <form id="form">
@@ -84,6 +88,7 @@ export default function BillComponent({ BillItems }) {
                     Checkout
                 </button>
             </div>
+            {ShowAlert && <Alertcomponent></Alertcomponent>}
         </>)
     )
 }
