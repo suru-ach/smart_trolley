@@ -5,12 +5,14 @@ const sql_generate = (transaction_id, contact, items) => {
         Transaction_No,
         Contact_Number,
         Bill_Date,
+        Product_ID,
         Product_Name,
-        Cost)
+        Cost,
+        Quantity)
         VALUES`;
     const sql_insert = items
-        .map(({ Product_Name, Cost }) => {
-            return `(${transaction_id},'${contact}','${new Date().toISOString().slice(0,10)}','${Product_Name}',${Cost})`;
+        .map(({ Product_Name, Cost, Product_ID, Quantity }) => {
+            return `(${transaction_id},'${contact}','${new Date().toISOString().slice(0,10)}',${Product_ID},'${Product_Name}',${Cost}, ${Quantity})`;
         })
         .join(',')+';';
     return prefix+sql_insert;
@@ -28,9 +30,10 @@ class Bill {
     }
 
     async addItem(product) {
-        // deletes if scanned twice
-        const product_exists = this.items.find(item => item.productCode === product.productCode && item.productID === product.productID);
-        if(!product_exists) {
+        const product_exists = this.items.find(item => item.productCode === product.productCode && item.Product_ID === product.Product_ID);
+        if(product_exists) {
+            this.item = this.items.filter(item => item.productCode !== product.productCode && item.Product_ID !== product.Product_ID);
+        } else {
             this.items.push(product);
         }
         return this.items;
@@ -48,6 +51,19 @@ class Bill {
     }
 
     async checkoutBill() {
+        const unique_products = new Map();
+        this.items = this.items.filter((item) => {
+            if(unique_products.has(item.Product_ID)) {
+                unique_products.set(item.Product_ID, unique_products.get(item.Product_ID) + 1);
+                return false;
+            }
+            item.Quantity = 1;
+            unique_products.set(item.Product_ID, 1);
+            return true;
+        });
+        this.items.forEach((item) => {
+            item.Quantity = unique_products.get(item.Product_ID);
+        });
         try {
             const sql = sql_generate(this.transaction_id, this.contact, this.items);
             await pool.execute(sql);

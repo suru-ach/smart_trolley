@@ -1,8 +1,13 @@
 import { Button, Table } from "flowbite-react";
 import { useEffect, useState } from "react";
 
-export default function BillComponent({billItems}) {
+export default function BillComponent(props) {
+    const [billItems, setBillItems] = useState([]);
     const [deleteItem, setDeleteItem] = useState('');
+
+    useEffect(() => {
+        setBillItems(props.billItems);
+    },);
 
     useEffect(()=>{
         console.log(deleteItem);
@@ -31,9 +36,11 @@ export default function BillComponent({billItems}) {
                         </span>
                     </Table.HeadCell>
                 </Table.Head>
-                <Table.Body className="divide-y">
-                    {
-                        billItems.map((item, key) => {
+                {/* <Table.Body className="divide-y">
+                    {   
+                        billItems.length === 0
+                        ? <div>empty</div>
+                        :billItems.map((item, key) => {
                             return (
                                 <Table.Row key={key} className="bg-white dark:border-gray-700 dark:bg-gray-800">
                                     <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
@@ -60,7 +67,7 @@ export default function BillComponent({billItems}) {
                             )
                         })
                     }
-                </Table.Body>
+                </Table.Body> */}
             </Table>
             </form>
         </>

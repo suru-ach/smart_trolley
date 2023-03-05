@@ -16,7 +16,7 @@ let socket = null;
 
 export default function Cart() {
 
-    const [billItems, setBillItems] = useState([]);
+    const [billItems, setBillItems] = useState({});
     const [alertColor, setAlertColor] = useState('');
     const [alertMessage, setAlertMessage] = useState('');
     const [alertStatus, setAlertStatus] = useState('');
@@ -41,8 +41,7 @@ export default function Cart() {
 
         
         socket.on('add-items', (data) => {
-            setBillItems(data.data);
-            console.log(data);
+            setBillItems(data);
         })
     },[]);
     
@@ -65,7 +64,10 @@ export default function Cart() {
             <DarkThemeToggle className="sticky top-[90vh]"></DarkThemeToggle>
             <div className="h-full relative w-full color.blue m-auto">
                 <div className="w-[90%] m-auto">
-                    {/* <BillComponent billItems={billItems}></BillComponent> */}
+                    {billItems.status === 'success'
+                    ?<BillComponent billItems={billItems.data} />
+                    :<div>Loading...</div>
+                    }
                     <div className="hover:mt-2 py-5 flex justify-center">
                     <button type="button" onClick={e => checkOut(e)} className="inline-flex items-center py-3.5 px-6 text-xs font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800">Checkout</button>
                     </div>

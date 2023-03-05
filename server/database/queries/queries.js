@@ -26,6 +26,7 @@ const createBillsTable =
     Transaction_No INT NOT NULL,
     Contact_Number VARCHAR(100) NOT NULL,
     Bill_Date DATE NOT NULL,
+    Product_ID INT NOT NULL,
     Product_Name VARCHAR(100) NOT NULL,
     Cost FLOAT NOT NULL,
     Quantity INT NOT NULL DEFAULT 1

@@ -19,8 +19,9 @@ async function socket(io) {
         socket.on('deleteItem', async (data) => {
             const { productCode, productID, contact } = data;
             const { user_bill } = users_socket.get(contact);
-            user_bill.items = user_bill.items.filter(item => item.productCode !== productCode || item.productID !== productID);
+            user_bill.items = user_bill.items.filter(item => item.productCode !== productCode || item.Product_ID !== productID);
             socket.emit('message', { status: "success", data: `deleted`});
+            socket.emit('add-items', { status: "success", data: user_bill.items });
         });
         
         socket.on('get-items' , async (data) => {
@@ -34,6 +35,8 @@ async function socket(io) {
             if(res) {
                 users_socket.delete(data.contact);
                 socket.emit('message', { status: "success", data: `checked out`});
+                user_bill.items = [];
+                socket.emit('add-items', { status: "success", data: user_bill.items });
             } else {
                 socket.emit('message', { status: "error", data: `could not check out`});
             }
@@ -64,5 +67,9 @@ const addProduct = async (req, res) => {
 
     // socket.emit('message', { status: "success", data: "data"});
 };
+
+// get all transaction numbers
+
+// get all products of the transaction numbers
 
 module.exports = { socket, addProduct }
