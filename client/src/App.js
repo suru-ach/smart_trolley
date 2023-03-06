@@ -11,6 +11,7 @@ import StoreManagement from './pages/StoreManagement';
 import NavbarComponent from './components/Navbar';
 import FooterComponent from './components/Footer';
 import Previouscomponent from './pages/Previous';
+import Newregistrationcomponent from './components/Newregister';
 import { useState } from 'react';
 
 function App() {
