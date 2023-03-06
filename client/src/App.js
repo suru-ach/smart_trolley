@@ -35,7 +35,7 @@ function App() {
             )}
             <Routes>
               <Route path='/' element={<LoginForm props={{ ShowComponents, setShowComponents }} />} />
-              <Route path='/register' element={<RegisterForm />} />
+              <Route path='/register' element={<RegisterForm props={{ ShowComponents, setShowComponents }} />} />
               <Route path='/landingPage' element={checkAuth ? <Home /> : <LoginForm props={{ ShowComponents, setShowComponents }} />} />
               <Route path='/about' element={checkAuth ? <About /> : <LoginForm props={{ ShowComponents, setShowComponents }} />} />
               <Route path='/cart' element={checkAuth ? <Cart /> : <LoginForm props={{ ShowComponents, setShowComponents }} />} />

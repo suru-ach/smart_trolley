@@ -18,7 +18,7 @@ const setLocalStorage = (data) => {
     }
 }
 
-    export default function RegisterForm() {
+    export default function RegisterForm({props}) {
 
         
         const [ShowLoading, setShowLoading] = useState(false);
@@ -29,7 +29,7 @@ const setLocalStorage = (data) => {
         const [disabled, setDisabled] = useState(false);
         const [message, setMessage] = useState('');
         const [msgcolor, setMsgColor] = useState('');
-        
+        props.setShowComponents(false);
         
         
         const sendValues = async (e) => {
