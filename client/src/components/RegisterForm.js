@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState,useEffect } from 'react';
+import { Link } from "react-router-dom";
+import { Label, TextInput, Checkbox, Button, Modal, DarkThemeToggle, Flowbite } from 'flowbite-react';
+import Loadingcomponent from './Loading';
 import axios from 'axios';
 
 const msgColors = {
@@ -9,7 +11,7 @@ const msgColors = {
 }
 
 const setLocalStorage = (data) => {
-    for(const key in data) {
+    for (const key in data) {
         window.localStorage.setItem(key, data[key]);
     }
 }
@@ -23,6 +25,7 @@ export default function RegisterForm() {
     const [disabled, setDisabled] = useState(false);
     const [message, setMessage] = useState('');
     const [msgcolor, setMsgColor] = useState('');
+    const [ShowLoading, setShowLoading] = useState(false);
 
     const sendValues = async (e) => {
         e.preventDefault();
@@ -30,8 +33,8 @@ export default function RegisterForm() {
         setMessage('loading...');
 
         try {
-            const data = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api/signup`,{ contact, password, email, username});
-            if(data.status === 201) {
+            const data = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api/signup`, { contact, password, email, username });
+            if (data.status === 201) {
                 setMsgColor(msgColors.success);
                 setMessage(data.data.data);
                 setLocalStorage(data.data.userInfo);
@@ -45,7 +48,7 @@ export default function RegisterForm() {
                     window.location = '/landingpage';
                 }, 1000);
             }
-        } catch(err) {
+        } catch (err) {
             setMsgColor(msgColors.error);
             setMessage(err.response.data.data);
             setTimeout(() => {
@@ -53,9 +56,12 @@ export default function RegisterForm() {
                 setMessage('');
             }, 2000);
         }
-        
+
     }
-    
+    useEffect(() => {
+        document.getElementById('submit-form').addEventListener('click', () => { setShowLoading(true) })
+    }, []);
+
     return (
         <>
             <div className='bg-slate-200 w-full flex justify-center'>

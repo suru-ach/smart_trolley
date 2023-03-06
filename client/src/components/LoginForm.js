@@ -105,7 +105,7 @@ const setLocalStorage = (data) => {
                                 </Button>
                             </div>
                             <div  className="text-sm font-medium text-gray-500 dark:text-gray-300" >
-                                <a href="/" id="newreg" className="text-blue-700 hover:underline dark:text-blue-500"
+                                <a href="/register" id="newreg" className="text-blue-700 hover:underline dark:text-blue-500"
                                 > Not registered? Create account</a>
                             </div>
                         </div>
