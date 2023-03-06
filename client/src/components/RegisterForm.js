@@ -90,28 +90,16 @@ const setLocalStorage = (data) => {
                                             <div className="mb-2 block">
                                                 <Label
                                                     htmlFor="Robert"
-                                                    value="First Name"
+                                                    value="Name"
                                                     />
                                             </div>
                                             <TextInput
-                                                id="Firstname"
-                                                placeholder="Robert"
-                                                required={false}
+                                                id="username"
+                                                placeholder="Srujan Acharya"
+                                                required={true}
+                                                 onChange={e => setUsername(e.target.value)}
                                                 
                                                 />
-                                        </div>
-                                        <div>
-                                            <div className="mb-2 block">
-                                                <Label
-                                                    htmlFor="Stifen"
-                                                    value="Last Name"
-                                                    />
-                                            </div>
-                                            <TextInput
-                                                id="Lastname"
-                                                placeholder="Stifen"
-                                                required={false}
-                                            />
                                         </div>
                                         <div>
                                             <div className="mb-2 block">
