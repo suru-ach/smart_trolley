@@ -20,6 +20,7 @@ export default function Cart() {
     const [alertColor, setAlertColor] = useState('');
     const [alertMessage, setAlertMessage] = useState('');
     const [alertStatus, setAlertStatus] = useState('');
+    const [deleteItem, setDeleteItem] = useState(0);
 
     useEffect(() => {
         socket = io('http://localhost:3000');
@@ -39,16 +40,15 @@ export default function Cart() {
             }, 5000);
         });
 
-        
         socket.on('add-items', (data) => {
             setBillItems(data);
-        })
+        });
     },[]);
     
-    
-    // socket emit delete item
-    
-    // socket emit checkout
+    useEffect(() => {
+        const contact = localStorage.getItem('contact');
+        socket.emit('deleteItem', { contact, productID: deleteItem })
+    }, [deleteItem]);
     
     const checkOut = (e) => {
         const contact = localStorage.getItem('contact');
@@ -65,7 +65,7 @@ export default function Cart() {
             <div className="h-full relative w-full color.blue m-auto">
                 <div className="w-[90%] m-auto">
                     {billItems.status === 'success'
-                    ?<BillComponent billItems={billItems.data} />
+                    ?<BillComponent data={billItems.data} deleteItem={deleteItem} setDeleteItem={setDeleteItem} />
                     :<div>Loading...</div>
                     }
                     <div className="hover:mt-2 py-5 flex justify-center">

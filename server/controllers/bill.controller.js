@@ -17,9 +17,10 @@ async function socket(io) {
         });
         
         socket.on('deleteItem', async (data) => {
-            const { productCode, productID, contact } = data;
+            const { productID, contact } = data;
             const { user_bill } = users_socket.get(contact);
-            user_bill.items = user_bill.items.filter(item => item.productCode !== productCode || item.Product_ID !== productID);
+            user_bill.items = user_bill.items.filter(item => item.Product_ID !== productID);
+            // user_bill.items = user_bill.items.filter(item => item.productCode !== productCode || item.Product_ID !== productID);
             socket.emit('message', { status: "success", data: `deleted`});
             socket.emit('add-items', { status: "success", data: user_bill.items });
         });
