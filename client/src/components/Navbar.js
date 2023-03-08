@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Dropdown, Navbar, Avatar, DarkThemeToggle, Button, } from "flowbite-react";
 import Loadingcomponent from "./Loading";
 import '../App.css';
-import logo from './user-solid.svg'
 
 export default function NavbarComponent(props) {
 
@@ -38,7 +37,7 @@ export default function NavbarComponent(props) {
 
                 <button type="button" class="flex mr-3 text-sm icon" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
                     <span class="sr-only">Open user menu</span>
-                    <img className="w-5 h-5" src={logo} alt="user photo" />
+                    <img className="w-5 h-5" src={process.env.PUBLIC_URL + '/Images/user-solid.svg'} alt="user photo" />
                 </button>
 
                 <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600"

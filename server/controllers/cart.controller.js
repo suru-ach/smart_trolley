@@ -16,6 +16,22 @@ const assignCart = async (req, res) => {
     }
 }
 
+const checkCart = async (req,res)=>{
+    const cartID = req.query.cartID;
+    try {
+        const result = await pool.execute('SELECT Phone FROM cart_map WHERE Cart_NO = ?', [cartID]);
+        console.log(result[0][0]);
+        if(result[0][0].Phone){
+            return res.status(200).send("User Connected");;
+        }
+        res.status(200).send("No User Connected")
+    } catch (error) {
+        console.log(error);
+        res.send("An error occurred!")
+        return;
+    }
+}
+
 const resetCart = async (req, res) => {
     const { cartID } = req.body;
     try {
@@ -27,4 +43,4 @@ const resetCart = async (req, res) => {
     }
 }
 
-module.exports = { assignCart, resetCart }
+module.exports = { assignCart,checkCart, resetCart }
