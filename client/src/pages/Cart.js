@@ -5,6 +5,7 @@ import BillComponent from "../components/Bill";
 import FooterComponent from "../components/Footer";
 import Alertcomponent from "../components/Alert";
 import io from 'socket.io-client';
+import QRScannerComponent from "../components/QRScanner";
 
 const msgColors = {
     success: 'text-green-400',
@@ -47,7 +48,9 @@ export default function Cart() {
     
     useEffect(() => {
         const contact = localStorage.getItem('contact');
-        socket.emit('deleteItem', { contact, productID: deleteItem })
+        if(socket !== null && deleteItem !== 0) {
+            socket.emit('deleteItem', { contact, productID: deleteItem })
+        }
     }, [deleteItem]);
     
     const checkOut = (e) => {
@@ -58,8 +61,9 @@ export default function Cart() {
     return (
         <>
             <Navbar />
+            {localStorage.getItem('contact') ? '' : <QRScannerComponent socket={socket} />}
             <div className={alertMessage ? `fixed bottom-1/4 left-1/2 -translate-x-1/2 z-50 p-4 mb-4 text-sm text-blue-800 w-3/4 rounded-lg bg-blue-50 dark:bg-gray-800 dark:text-blue-400`: `hidden`} role="alert">
-                <span className={alertColor}>{alertStatus}</span>{alertMessage}
+                <span className={alertColor}>{alertStatus+'! '}</span>{'message: '+alertMessage}
             </div>
             <DarkThemeToggle className="sticky top-[90vh]"></DarkThemeToggle>
             <div className="h-full relative w-full color.blue m-auto">

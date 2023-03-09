@@ -16,8 +16,8 @@ const setLocalStorage = (data) => {
 
 export default function LoginForm() {
 
-    const [contact, setContact] = useState('1212345679');
-    const [password, setPassword] = useState('password');
+    const [contact, setContact] = useState('');
+    const [password, setPassword] = useState('');
     const [disabled, setDisabled] = useState(false);
     const [message, setMessage] = useState('');
     const [msgcolor, setMsgColor] = useState('');
