@@ -2,24 +2,24 @@ import React, { useState } from "react";
 import { Button } from "flowbite-react";
 import axios from 'axios';
 
-
 export default function TestComponent() {
+
+    const [barcode, setBarcode] = useState('')
+    const [productCode, setProductCode] = useState('')
+
+    const contact = window.localStorage.getItem('contact');
+
     function submit_form(e) {
         e.preventDefault();
-        const barcode = document.getElementById('barcode').value;
-        axios.post(`${process.env.REACT_APP_SERVER_URL}/api/addToBill`, {
-            'barcode': barcode,
-            'cartID': localStorage.getItem('cartID'),
-            'BillNo': localStorage.getItem('BillNo')
-        })
+        axios.post(`${process.env.REACT_APP_SERVER_URL}/api/addProduct`, { productCode, productID: barcode, cartID:contact })
     }
-
 
     return (
         <>
-            <form id="form" onSubmit={submit_form}>
-                <label for="barcode">Barcode</label>
-                <input id="barcode" type={"text"}></input>
+            <form onSubmit={e => submit_form(e)}>
+                <label htmlFor="barcode">Barcode</label>
+                <input id="barcode" type="text" value={barcode} onChange={e => setBarcode(e.target.value)} />
+                <input id="productCode" type="number" value={productCode} onChange={e => setProductCode(e.target.value)} />
                 <Button type="submit">Add</Button>
             </form>
         </>

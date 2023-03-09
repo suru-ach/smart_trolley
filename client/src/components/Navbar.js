@@ -2,13 +2,16 @@ import React, { useEffect, useState } from "react";
 import { Dropdown, Navbar, Avatar, DarkThemeToggle, Button, } from "flowbite-react";
 import Loadingcomponent from "./Loading";
 import '../App.css';
-import logo from './user-solid.svg'
 
 export default function NavbarComponent(props) {
 
 
     const [ShowLoading, setShowLoading] = useState(false);
+    const script = document.createElement("script");
 
+    script.src = "https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js";
+
+    document.body.appendChild(script);
     useEffect(() => {
 
         function userLogout() {
@@ -51,6 +54,7 @@ export default function NavbarComponent(props) {
                     <div class="container flex flex-wrap items-center ">
 
 
+
                         <div class="w-10 h-10">
                             <img src="./Images/logo.png" alt="click here to open" />
                         </div>
@@ -58,6 +62,12 @@ export default function NavbarComponent(props) {
                     </div>
                     <div>
                         <ul class="flex flex-col p-4 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+
+                <button type="button" class="flex mr-3 text-sm icon" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
+                    <span class="sr-only">Open user menu</span>
+                    <img className="w-5 h-5" src={process.env.PUBLIC_URL + '/Images/user-solid.svg'} alt="user photo" />
+                </button>
+
 
                             <li class="transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-100 hover: duration-300 "><a href="/landingPage">HOME</a></li>
                             <li class="transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-100 hover: duration-300"><a href="/conatct">CONTACT</a></li>

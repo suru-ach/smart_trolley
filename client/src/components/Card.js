@@ -4,6 +4,7 @@ export default function CardComponent() {
     return (
         <>
             <div class=" overflow-visible transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-105 bg-indigo-500 duration-300 bg-white border rounded-lg rounded dark:bg-gray-800 text">
+
                 <img src="./Images/shopping.jpg"></img>
                 <div class="p-6">
                     <div class="text-gray-600 text-xs uppercase font-semibold tracking-wide">

@@ -21,17 +21,9 @@ export default function QRScannerComponent() {
         .catch((err) => {
           console.log(err);
         });
-
-      const phone = localStorage.getItem('contact')
-
-      axios.post(`${process.env.REACT_APP_SERVER_URL}/api/cartIDSubmit`, { cartID: decodedText, phone })
-        .then((data) => {
-          setLocalStorage(data.data.data)
-          setShowQRReader(true)
-        })
-        .catch(err => {
-          console.log(err);
-        })
+        localStorage.setItem("cartID", decodedText);
+        setShowQRReader(true);
+        window.location.reload();
     };
     if (!ShowQRReader) {
       const config = { fps: 30, qrbox: { width: 150, height: 150 } };
