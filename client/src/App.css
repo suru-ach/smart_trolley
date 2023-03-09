@@ -7,8 +7,8 @@
 }
 
 
-header {
-  background-color: black;
+/* header {
+  background-color: rgb(33, 229, 98);
   font-family: 'Shantell Sans', cursive;
   background-color: var(--main-bg-color);
 
@@ -19,8 +19,9 @@ header {
 
 nav {
   display: flex;
-  background-color: rgb(89, 180, 154);
+  background-color: rgb(33, 229, 98);
   font-family: 'Shantell Sans', cursive;
+  
 
 }
 
@@ -66,7 +67,7 @@ nav ul li a:hover {
   right: 0px;
   margin: 3%;
   transform: scale(2);
-  align-self: center;
+  align-self: center; 
   cursor: pointer;
 }
 
@@ -91,12 +92,6 @@ nav ul li a:hover {
   align-self: center;
 }
 
-img {
-  margin: 3%;
-  padding: 0%;
-  width: 60%;
-
-}
 
 #icon {
   transform: scale(2);
@@ -127,4 +122,4 @@ footer {
   border-radius: 10px;
   background-color: rgb(4, 172, 35);
   cursor: pointer;
-}
+} */

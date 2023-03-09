@@ -1,4 +1,4 @@
-import {Timeline } from "flowbite-react";
+import { Card, Timeline } from "flowbite-react";
 import BillComponent from "./Bill";
 
 export default function Timelinecomponent() {
