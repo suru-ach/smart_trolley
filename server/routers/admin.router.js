@@ -3,10 +3,10 @@ const multer = require('multer')
 const upload = multer({ dest: 'uploads/' })
 
 const pool = require('../database/config/db');
-const { addMultipleProducts, addSingleProduct, deleteProduct } = require('../controllers/products.controller')
+const { addMultipleProducts, addSingleProduct, getAllProducts } = require('../controllers/products.controller')
 
-router.route('/api/addMultipleProducts').post(upload.single('product'), addMultipleProducts);
+router.route('/api/addMultipleProducts').post(upload.single('productsFile'), addMultipleProducts);
 router.route('/api/addSingleProduct').post(addSingleProduct);
-router.route('/api/delete').post(deleteProduct);
+router.route('/api/getAllProducts').get(getAllProducts);
 
 module.exports = router;

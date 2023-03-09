@@ -36,6 +36,7 @@ export default function LoginForm({ props }) {
                 setPassword('');
                 setContact('');
                 props.setShowComponents(true)
+                document.cookie = `user_access_token=${data.data.token}`
                 setShowLoading(false);
                 window.location = '/landingpage';
 

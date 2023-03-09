@@ -7,7 +7,11 @@ export default function NavbarComponent(props) {
 
 
     const [ShowLoading, setShowLoading] = useState(false);
+    const script = document.createElement("script");
 
+    script.src = "https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js";
+
+    document.body.appendChild(script);
     useEffect(() => {
 
         function userLogout() {

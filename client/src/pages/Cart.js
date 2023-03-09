@@ -52,17 +52,11 @@ export default function Cart() {
         const contact = localStorage.getItem('contact');
         const cartID = localStorage.getItem('cartID');
         socket.emit('checkout', { cartID, contact });
-        axios.post(`${process.env.REACT_APP_SERVER_URL}/api/resetCart`, { cartID })
-            .then(data => {
-                if (data.data.message) {
-                    localStorage.removeItem('cartID');
-                }
-            })
     }
 
     socket.on("connect", () => {
         console.log(socket.id); // x8WIv7-mJelg7on_ALbx
-        socket.on('add-product', (products) => {
+        socket.on('update-cart', (products) => {
 
             setBillItems(JSON.parse(products).payload)
             console.log(JSON.parse(products).payload);

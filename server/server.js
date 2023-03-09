@@ -33,7 +33,7 @@ app.use(userRouter);
 app.use(billRouter);
 app.use(auth_token, adminRouter);
 app.get('/', (req,res)=>{
-    res.status(200).send("Live")
+    res.status(200).json({message:"success"})
 })
 httpServer.listen(port, () => {
     console.log(`port ${port}`);
