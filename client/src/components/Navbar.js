@@ -30,7 +30,7 @@ export default function NavbarComponent(props) {
                             <span
                                 class="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 hidden md:inline">New</span>
                             Our Services are now avaliable in 300 more locations
-                            <a href="/blocks/"
+                            <a href="#"
                                 class="inline-flex items-center ml-2 text-sm font-medium text-blue-600 md:ml-2 dark:text-blue-500 hover:underline">
                                 Check
                                 <svg class="w-4 h-4 ml-1 text-blue-600 dark:text-blue-500" fill="currentColor"
@@ -45,15 +45,16 @@ export default function NavbarComponent(props) {
                 </div>
             </div>
             {/* annoucement */}
-            <nav class="bg-white border-gray-200 dark:bg-gray-900 rounded p-2">
+            <nav class="bg-white border-gray-200 dark:bg-green-400 rounded p-2">
 
                 <div class=" grid grid-cols-3 flex items-center dark:text-white">
                     <div class="container flex flex-wrap items-center ">
-                        <div class="self-center text-xl font-semibold whitespace-nowrap dark:text-white" > <h1>Smart</h1></div>
+
 
                         <div class="w-10 h-10">
-                            <img src="./Images/Mypr.png" alt="click here to open" />
+                            <img src="./Images/logo.png" alt="click here to open" />
                         </div>
+                        <div class="self-center text-xl font-semibold whitespace-nowrap dark:text-white" > <h1>Smart Trolley</h1></div>
                     </div>
                     <div>
                         <ul class="flex flex-col p-4 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
