@@ -33,7 +33,7 @@ export default function CardComponent() {
                         <h6 class=" font-semibold text-gray-600 text-sm">Price 300</h6>
                     </div>
                     <div class="mt-2 flex items-center ">
-                     <button className=" font-semibold bg-white text-gray-600  p-0.5 rounded">Shop Now</button>
+                        <button className=" font-semibold bg-white text-gray-600  p-0.5 rounded">Shop Now</button>
                         <span class="ml-2 text-gray-600 text-sm"> reviews</span>
                     </div>
                 </div>

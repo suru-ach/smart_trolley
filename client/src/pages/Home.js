@@ -25,9 +25,16 @@ export default function Home() {
                             <h1>Shop top categories</h1>
                         </Tooltip>
                     </div>
-                    <Carscommponent></Carscommponent>
-                    <h2 className="text-4xl text-center mr-20 p-8">Deals</h2>
-                    <div className="overflow-x-scroll flex space-x-5 ">
+
+                    <div data-aos="fade-up" data-aos-delay="100">
+                        <Carscommponent></Carscommponent>
+                        <h2 className=" my-4 text-4xl text-center focus:outline-none focus:ring focus:ring-violet-300 rounded-t-lg md:rounded-t-none md:rounded-tl-lg md:">Deals</h2>
+                    </div>
+
+
+                    <div className="overflow-x-scroll flex space-x-4 " data-aos="flip-left" data-aos-delay="10" >
+
+                   
                         <CardComponent></CardComponent>
                         <CardComponent></CardComponent>
                         <CardComponent></CardComponent>
