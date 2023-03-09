@@ -11,7 +11,6 @@ const msgColors = {
 }
 
 export default function LoginForm({ props }) {
-
     const [Disabled, setDisabled] = useState(false)
     const [contact, setContact] = useState('');
     const [MsgColor, setMsgColor] = useState('');
@@ -53,7 +52,6 @@ export default function LoginForm({ props }) {
         }
 
     }
-
 
     return (
         <>
@@ -124,6 +122,4 @@ export default function LoginForm({ props }) {
             </React.Fragment>
         </>
     )
-
-
 }
