@@ -41,7 +41,7 @@ export default function Home() {
                     </div>
 
 
-                    <div className="overflow-x-scroll flex space-x-5 " data-aos="flip-left" data-aos-delay="10" >
+                    <div className="overflow-x-scroll flex space-x-4 " data-aos="flip-left" data-aos-delay="10" >
                         <CardComponent></CardComponent>
                         <CardComponent></CardComponent>
                         <CardComponent></CardComponent>
