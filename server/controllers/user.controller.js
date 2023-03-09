@@ -27,7 +27,7 @@ const signIn = async (req, res) => {
     return res
         .status(200)
         .cookie("user_access_token", token, { httpOnly: true })
-        .json({ status: "success", data: "logged in successful", userInfo: { Customer_Name, contact, Email } });
+        .json({ status: "success", data: "logged in successful", userInfo: { Customer_Name, contact, email: Email } });
 }
 
 const signUp = async (req, res) => {
@@ -47,7 +47,7 @@ const signUp = async (req, res) => {
     return res
         .status(201)
         .cookie("user_access_token", token, { httpOnly: true })
-        .json({ status: "success", data: "register successful", userInfo: { username, contact, email } });
+        .json({ status: "success", data: "register successful", userInfo: { Customer_Name:username, contact, email } });
 }
 
 const signOut = async (req, res) => {
