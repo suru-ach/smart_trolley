@@ -47,7 +47,8 @@ async function socket(io) {
                 users_socket.delete(data.contact);
                 socket.emit('message', { status: "success", data: `checked out`});
                 user_bill.items = [];
-                socket.emit('add-items', { status: "success", data: user_bill.items });
+                socket.emit('redirect', {status: "success", data: {transaction_id: user_bill.transaction_id}});
+                // socket.emit('add-items', { status: "success", data: user_bill.items });
             } else {
                 socket.emit('message', { status: "error", data: `could not check out`});
             }

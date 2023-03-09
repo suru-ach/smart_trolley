@@ -44,6 +44,12 @@ export default function Cart() {
         socket.on('add-items', (data) => {
             setBillItems(data);
         });
+
+        socket.on('redirect', (data) => {
+            console.log(data);
+            // redirect
+        })
+
     },[]);
     
     useEffect(() => {
