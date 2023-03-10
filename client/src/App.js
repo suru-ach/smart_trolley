@@ -14,6 +14,8 @@ import Previouscomponent from './pages/Previous';
 import Newregistrationcomponent from './components/Newregister';
 import { useState } from 'react';
 import axiosInstance from 'axios';
+import 'flowbite/dist/flowbite'
+
 const axios = axiosInstance.create({ withCredentials: true })
 
 function App() {
@@ -33,10 +35,10 @@ function App() {
               <Route path='/' element={<LoginForm props={{ ShowComponents, setShowComponents }} />} />
 
               <Route path='/register' element={<RegisterForm props={{ ShowComponents, setShowComponents }} />} />
-              <Route path='/landingPage' element={checkAuth ? <Home /> : <LoginForm props={{ ShowComponents, setShowComponents }} />} />
-              <Route path='/about' element={checkAuth ? <About /> : <LoginForm props={{ ShowComponents, setShowComponents }} />} />
-              <Route path='/cart' element={checkAuth ? <Cart /> : <LoginForm props={{ ShowComponents, setShowComponents }} />} />
-              <Route path='/previousbills' element={checkAuth ? <Previouscomponent /> : <LoginForm props={{ ShowComponents, setShowComponents }} />} />
+              <Route path='/landingPage' element={LoggedIn ? <Home /> : <LoginForm props={{ ShowComponents, setShowComponents }} />} />
+              <Route path='/about' element={LoggedIn ? <About /> : <LoginForm props={{ ShowComponents, setShowComponents }} />} />
+              <Route path='/cart' element={LoggedIn ? <Cart /> : <LoginForm props={{ ShowComponents, setShowComponents }} />} />
+              <Route path='/previousbills' element={LoggedIn ? <Previouscomponent /> : <LoginForm props={{ ShowComponents, setShowComponents }} />} />
               <Route path='/newbill' element={<TestComponent />} />
               <Route path='/storepage' element={LoggedIn ? <StoreManagement /> : <LoginForm props={{ ShowComponents, setShowComponents }} />} />
             </Routes>

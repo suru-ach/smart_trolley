@@ -123,3 +123,12 @@ footer {
   background-color: rgb(4, 172, 35);
   cursor: pointer;
 } */
+.dropdown:hover .dropdown-menu {
+  display: block;
+  position: absolute;
+  
+}
+.bg-inherit {
+  background-color:rgb(89, 180, 154)
+  ;
+}
