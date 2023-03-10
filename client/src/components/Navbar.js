@@ -32,7 +32,7 @@ export default function NavbarComponent(props) {
                         <li><a href="/conatct">CONTACT</a></li>
                         <li><a href="/about">ABOUT</a></li>
                         <li><a href="/cart">CART</a></li>
-                        <li><a href="/previousbill">PREVIOUS BILL</a></li>
+                        <li><a href="/previousbills">PREVIOUS BILL</a></li>
 
                     </ul>
                 </div>
