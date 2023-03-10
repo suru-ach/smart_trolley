@@ -7,7 +7,6 @@ const sql_generate = (transaction_id, contact, items) => {
             return `(${transaction_id},'${contact}',${Product_ID},'${Product_Name}',${Cost}, ${Quantity})`;
         })
         .join(',') + ';';
-    console.log(prefix + sql_insert);
     return prefix + sql_insert;
 }
 
