@@ -13,6 +13,8 @@ import FooterComponent from './components/Footer';
 import Previouscomponent from './pages/Previous';
 import { useState } from 'react';
 import axiosInstance from 'axios';
+import 'flowbite/dist/flowbite'
+
 const axios = axiosInstance.create({ withCredentials: true })
 
 function App() {
@@ -30,7 +32,8 @@ function App() {
             )}
             <Routes>
               <Route path='/' element={<LoginForm props={{ ShowComponents, setShowComponents }} />} />
-              <Route path='/register' element={<RegisterForm />} />
+
+              <Route path='/register' element={<RegisterForm props={{ ShowComponents, setShowComponents }} />} />
               <Route path='/landingPage' element={LoggedIn ? <Home /> : <LoginForm props={{ ShowComponents, setShowComponents }} />} />
               <Route path='/about' element={LoggedIn ? <About /> : <LoginForm props={{ ShowComponents, setShowComponents }} />} />
               <Route path='/cart' element={LoggedIn ? <Cart /> : <LoginForm props={{ ShowComponents, setShowComponents }} />} />
