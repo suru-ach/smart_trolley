@@ -14,7 +14,7 @@ MFRC522 mfrc522(SS_PIN, RST_PIN);   // Create MFRC522 instance
 //ENTER YOUR WIFI SETTINGS
 const char *ssid = "Airtel_9880156393";  
 const char *password = "air01575";
-const char *host = "http://192.168.1.8:8000/api/addProduct"; 
+const char *host = "http://192.168.1.6:8000/api/addProduct"; 
 WiFiClient wifiClient;
 
 

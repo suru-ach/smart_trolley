@@ -37,7 +37,7 @@ class Bill {
         try {
             const [transaction_value, _] = await pool.execute(`SELECT MAX(Bill_No) FROM all_bills WHERE Phone=${this.contact};`);
             const [_key, transaction_id] = Object.entries(transaction_value[0])[0];
-            return transaction_id === null ? 1 : transaction_id + 1;
+            return transaction_id === null ? 1 : parseInt(transaction_id) + 1;
         } catch (err) {
             console.log(err);
         }
