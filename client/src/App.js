@@ -14,6 +14,7 @@ import Previouscomponent from './pages/Previous';
 import { useState } from 'react';
 import axiosInstance from 'axios';
 import 'flowbite/dist/flowbite'
+import Newregistrationcomponent from './components/Newregister';
 
 const axios = axiosInstance.create({ withCredentials: true })
 
@@ -37,7 +38,7 @@ function App() {
             <Routes>
               <Route path='/' element={<LoginForm props={{ ShowComponents, setShowComponents }} />} />
 
-              <Route path='/register' element={<RegisterForm props={{ ShowComponents, setShowComponents }} />} />
+              <Route path='/register' element={<Newregistrationcomponent props={{ ShowComponents, setShowComponents }}/>} />
               <Route path='/landingPage' element={LoggedIn ? <Home /> : <LoginForm props={{ ShowComponents, setShowComponents }} />} />
               <Route path='/about' element={LoggedIn ? <About /> : <LoginForm props={{ ShowComponents, setShowComponents }} />} />
               <Route path='/cart' element={LoggedIn ? <Cart /> : <LoginForm props={{ ShowComponents, setShowComponents }} />} />
