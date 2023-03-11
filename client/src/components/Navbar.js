@@ -103,5 +103,5 @@ export default function NavbarComponent(props) {
             
             {ShowLoading && <Loadingcomponent url={"/"} emassage={"Loging out"}></Loadingcomponent>}
         </>
-    )
+    );
 }

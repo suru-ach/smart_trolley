@@ -15,7 +15,7 @@ const msgColors = {
     error: 'text-red-400'
 }
 export default function Cart() {
-    const [billItems, setBillItems] = useState({});
+    const [BillItems, setBillItems] = useState([]);
     const [alertColor, setAlertColor] = useState('');
     const [alertMessage, setAlertMessage] = useState('');
     const [alertStatus, setAlertStatus] = useState('');
@@ -25,19 +25,37 @@ export default function Cart() {
         if (Ready) {
             const username = localStorage.getItem('Customer_Name');
             const cartID = localStorage.getItem('cartID');
+            socket.on("connect", () => {
+                console.log(socket.id); // x8WIv7-mJelg7on_ALbx
+                socket.on('update-cart', (products) => {
+                    setBillItems(products)
+                    console.log(products);
+                })
+            })
             socket.emit('join', { cartID, username });
             socket.emit('update-cart', { cartID });
-    
+
             socket.on('message', ({ status, data }) => {
-                setAlertColor(msgColors[status]);
-                setAlertStatus(status);
-                setAlertMessage(data);
-                setTimeout(() => {
-                    setAlertMessage('');
-                }, 5000);
+                if (data === "checked out") {
+                    setAlertColor(msgColors[status]);
+                    setAlertStatus(status);
+                    setAlertMessage(data);
+                    setTimeout(() => {
+                        setAlertMessage('');
+                    }, 2000);
+                    window.location.replace('/landingPage')
+                }
+                else {
+                    setAlertColor(msgColors[status]);
+                    setAlertStatus(status);
+                    setAlertMessage(data);
+                    setTimeout(() => {
+                        setAlertMessage('');
+                    }, 5000);
+                }
             });
-    
-    
+
+
             socket.on('update-cart', (data) => {
                 setBillItems(data);
             })
@@ -54,15 +72,6 @@ export default function Cart() {
         socket.emit('checkout', { cartID, contact });
     }
 
-    socket.on("connect", () => {
-        console.log(socket.id); // x8WIv7-mJelg7on_ALbx
-        socket.on('update-cart', (products) => {
-
-            setBillItems(JSON.parse(products).payload)
-            console.log(JSON.parse(products).payload);
-        })
-    });
-
     return (
         <>
             <QRScannerComponent></QRScannerComponent>
@@ -74,8 +83,8 @@ export default function Cart() {
                     <DarkThemeToggle className="sticky top-[90vh]"></DarkThemeToggle>
                     <div className="h-full relative w-full color.blue m-auto">
                         <div className="w-[90%] m-auto">
-                            {billItems.status === 'success'
-                                ? <BillComponent billItems={billItems.data} />
+                            {BillItems.status === 'success'
+                                ? <BillComponent props={BillItems.data} />
                                 : <div>Loading...</div>
                             }
                             <div className="hover:mt-2 py-5 flex justify-center">

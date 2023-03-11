@@ -71,10 +71,14 @@ class Bill {
 
     async getBill(transaction_number) {
         // get bill
-        const [data, _] = await pool.execute(`SELECT * FROM all_bills WHERE Contact_Number=${this.contact} AND Transaction_No=${transaction_number};`);
+        const [data, _] = await pool.execute(`SELECT * FROM all_bills WHERE Phone=${this.contact} AND Transaction_No=${transaction_number};`);
         return data;
     }
 
+    static async getPreviousBills(contact) {
+        const [data, _] = await pool.execute(`SELECT * FROM all_bills WHERE Phone=?`, [contact]);
+        return data;
+    }
 }
 
 module.exports = Bill;

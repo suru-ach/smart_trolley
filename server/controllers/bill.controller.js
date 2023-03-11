@@ -18,20 +18,24 @@ async function socket(io) {
         });
 
         socket.on('checkout', async (data) => {
+            var bill;
             if (billContainer.has(data.cartID)) {
-                const { bill } = billContainer.get(data.cartID);
-                await bill.init(data.contact);
-                console.log(bill.transaction_id);
-                const res = await bill.checkoutBill();
-                if (res) {
-                    billContainer.delete(data.cartID);
-                    socket.emit('message', { status: "success", data: `checked out` });
-                } else {
-                    socket.emit('message', { status: "error", data: `could not check out` });
+                ({ bill } = billContainer.get(data.cartID))
+                if (bill.items.length !== 0) {
+                    const { bill } = billContainer.get(data.cartID);
+                    await bill.init(data.contact);
+                    console.log(bill.transaction_id);
+                    const res = await bill.checkoutBill();
+                    if (res) {
+                        billContainer.delete(data.cartID);
+                        socket.emit('message', { status: "success", data: `checked out` });
+                    } else {
+                        socket.emit('message', { status: "error", data: `could not check out` });
+                    }
                 }
             }
-            else{
-                socket.emit("message", {status:"error", data:"Your cart is empty!"})
+            else {
+                socket.emit("message", { status: "error", data: "Your cart is empty!" })
             }
         });
 
@@ -51,7 +55,7 @@ const updateBill = (cartID) => {
 };
 
 const addProduct = async (req, res) => {
-    const { cartID, barcode, productCode } = req.query;
+    const { cartID, barcode, productCode } = req.body;
     var bill = {};
     if (billContainer.has(cartID)) {
         bill = billContainer.get(cartID).bill;
@@ -73,4 +77,15 @@ const addProduct = async (req, res) => {
     }
 }
 
-module.exports = { addProduct, socket }
+const getPreviousBills = async (req, res) => {
+    const { contact } = req.query;
+    try {
+        const bills = await Bill.getPreviousBills(contact);
+        res.status(200).json({ message: "success", data: bills })
+    } catch (error) {
+        console.log(error);
+        res.send("An Error Occurred!");
+    }
+}
+
+module.exports = { addProduct, socket, getPreviousBills }
