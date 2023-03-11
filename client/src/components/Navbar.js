@@ -8,11 +8,6 @@ export default function NavbarComponent(props) {
 
     console.log(window.location.href)
     const [ShowLoading, setShowLoading] = useState(false);
-    const script = document.createElement("script");
-
-    script.src = 'https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js';
-
-    document.body.appendChild(script);
 
     function userLogout() {
         setShowLoading(true)
