@@ -40,7 +40,7 @@ router.route('/api/admin/addProduct').post(async (req, res) => {
     res.status(200).json({ status: "success", data: null });
 });
 
-router.route('/api/addProducts').post(upload, (req, res) => {
+router.route('/api/admin/addProducts').post(upload, (req, res) => {
     const file = fs.readFile('./database/adminUploads/' + req.file.originalname, async (err, data) => {
         if (err) throw (err);
         const payload = JSON.parse(data.toString());

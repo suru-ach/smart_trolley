@@ -18,6 +18,31 @@ export default function AddProducts() {
     const [id, setId] = useState('');
     const [name, setName] = useState('');
     const [cost, setCost] = useState('');
+    const [file, setFile] = useState(null);
+
+    const sendFile = async (e) => {
+        e.preventDefault();
+        if (file === null) {
+            setAlertColor(msgColors.error);
+            setAlertStatus('error');
+            setAlertMessage('error reading file!');
+        } else {
+            const form = new FormData();
+            form.append('fileAttr', file);
+            const res = await axios.post('/api/admin/addProducts', form,
+                { 
+                    headers: { 'Content-type': 'multipart/form-data' }
+                }
+            );
+            setAlertColor(msgColors.success);
+            setAlertStatus('success');
+            setAlertMessage('successfully added!');
+            setTimeout(() => {
+                setAlertMessage('');
+            }, 5000);
+        }
+    }
+
 
     const sendData = async (e) => {
         e.preventDefault();
@@ -46,12 +71,30 @@ export default function AddProducts() {
             </div>
             <DarkThemeToggle className="sticky top-[90vh]"></DarkThemeToggle>
             <div className="h-full relative w-full color.blue m-auto">
-                <form onSubmit={e => sendData(e)}>
-                    <input value={id} onChange={e => setId(e.target.value)} placeholder="set id" />
-                    <input value={name} onChange={e => setName(e.target.value)} placeholder="set name" />
-                    <input value={cost} onChange={e => setCost(e.target.value)} placeholder="set cost" />
-                    <button type="submit">submit</button>
-                </form>
+
+                <hr />
+                <div>
+                    <p className="p-4 text-xl font-bold">Add products</p>
+                    <form onSubmit={e => sendFile(e)} className="flex flex-col justify-center w-full">
+                        <div className="flex flex-col md:flex-row justify-between">
+                            <input type="file" onChange={e => setFile(e.target.files[0])} />
+                        </div>
+                        <button type="submit" className="my-6 m-auto p-3 rounded-lg text-white bg-blue-500 hover:bg-blue-600">Upload file</button>
+                    </form>
+                </div>
+
+                <hr />
+                <div>
+                    <p className="p-4 text-xl font-bold">Add product</p>
+                    <form onSubmit={e => sendData(e)} className="flex flex-col justify-center w-full">
+                        <div className="flex flex-col md:flex-row justify-between">
+                            <input className="mx-2 p-4 mt-2 md:w-1/3" value={id} onChange={e => setId(e.target.value)} placeholder="set id" />
+                            <input className="mx-2 p-4 mt-2 md:w-1/3" value={name} onChange={e => setName(e.target.value)} placeholder="set name" />
+                            <input className="mx-2 p-4 mt-2 md:w-1/3" value={cost} onChange={e => setCost(e.target.value)} placeholder="set cost" />
+                        </div>
+                        <button type="submit" className="my-6 m-auto p-3 rounded-lg text-white bg-blue-500 hover:bg-blue-600">add Product</button>
+                    </form>
+                </div>
             </div>
             <FooterComponent />
         </>
