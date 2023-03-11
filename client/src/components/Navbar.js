@@ -45,11 +45,11 @@ export default function NavbarComponent(props) {
                             label={<Avatar alt="User settings" img="./Images/user-solid.svg" rounded={true} />}
                         >
                             <Dropdown.Header>
-                                <span className="block text-sm text-black">
+                                <span className="block truncate text-lg font-semibold">
                                     {localStorage.getItem('Customer_Name')}
                                 </span>
-                                <span className="block truncate text-sm font-medium">
-                                    {localStorage.getItem('Email')}
+                                <span className="block truncate text-lg font-semibold">
+                                    {localStorage.getItem('email')}
                                 </span>
                             </Dropdown.Header>
                             <Dropdown.Item>
@@ -61,7 +61,7 @@ export default function NavbarComponent(props) {
                             <Dropdown.Divider />
                             <Dropdown.Item>
                                 <button id="signOut-btn"
-                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign
+                                    class="block m-auto px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign
                                     out</button>
                             </Dropdown.Item>
                         </Dropdown>

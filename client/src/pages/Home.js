@@ -22,7 +22,6 @@ export default function Home() {
 
             <React.Fragment>
 
-                <DarkThemeToggle className="sticky top-[90vh]"></DarkThemeToggle>
                 <div className={`p-0 my-0`}>
                     <div data-aos="fade-up">
                         <CarouselComponent></CarouselComponent>

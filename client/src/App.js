@@ -28,7 +28,11 @@ function App() {
         <Flowbite className={`min-h-full`}>
           <BrowserRouter>
             {ShowComponents && (
-              <NavbarComponent props={{ ShowComponents, setShowComponents }}></NavbarComponent>
+              <>
+                <NavbarComponent props={{ ShowComponents, setShowComponents }}></NavbarComponent>
+                <DarkThemeToggle className="sticky top-[90vh] z-20"></DarkThemeToggle>
+
+              </>
             )}
             <Routes>
               <Route path='/' element={<LoginForm props={{ ShowComponents, setShowComponents }} />} />

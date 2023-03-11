@@ -75,23 +75,22 @@ export default function Cart() {
     return (
         <>
             <QRScannerComponent></QRScannerComponent>
-            {Ready && (<div className="h-full relativecolor.blue bg-East bay w-[85%] m-auto">
+            {Ready && (<div className="min-h-screen relativecolor.blue bg-East bay w-[85%] m-auto">
                 <div className="w-[90%] m-auto">
                     <div className={alertMessage ? `fixed bottom-1/4 left-1/2 -translate-x-1/2 z-50 p-4 mb-4 text-sm text-blue-800 w-3/4 rounded-lg bg-blue-50 dark:bg-gray-800 dark:text-blue-400` : `hidden`} role="alert">
                         <span className={alertColor}>{alertStatus}</span>{alertMessage}
                     </div>
-                    <DarkThemeToggle className="sticky top-[90vh]"></DarkThemeToggle>
                     <div className="h-full relative w-full color.blue m-auto">
                         <div className="w-[90%] m-auto">
                             {BillItems.status === 'success'
                                 ? <BillComponent props={BillItems.data} />
                                 : <div>Loading...</div>
                             }
-                            <div className="hover:mt-2 py-5 flex justify-center">
-                                <button type="button" onClick={e => checkOut(e)} className="inline-flex items-center py-3.5 px-6 text-xs font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800">Checkout</button>
-                            </div>
                         </div>
                     </div>
+                </div>
+                <div className="hover:mt-2 py-5 flex justify-center">
+                    <button type="button" onClick={e => checkOut(e)} className="inline-flex items-center py-3.5 px-6 text-xs font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800">Checkout</button>
                 </div>
             </div>)}
         </>

@@ -14,7 +14,6 @@ export default function About() {
     }, [])
     return (
         <>
-            <DarkThemeToggle className="sticky top-[90vh]"></DarkThemeToggle>
             <div className="h-full relative w-full color.blue bg-East bay w-[80%] m-auto" >
                 <div className={`w-[75%] m-auto`} data-aos="flip-left"  data-aos-delay="100">
                         <Instruction></Instruction>
