@@ -10,7 +10,7 @@ export default function TestComponent() {
 
     function submit_form(e){
         e.preventDefault();
-        axios.post("http://localhost:5000/api/addProduct", {productCode,productID: barcode, cart_id});
+        axios.post("http://localhost:5000/api/addproduct", {productCode,productID: barcode, cart_id});
     }
 
     return (

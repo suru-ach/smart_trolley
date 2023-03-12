@@ -1,22 +1,25 @@
 const pool = require('../database/config/db');
 const hash = require('../utils/password.utils');
+const { admin_key } = require('../utils/secret.utils');
 
 class User {
-    constructor(username, contact, password, email) {
+    constructor(username, contact, password, email, adminKey) {
         this.username = username;
         this.password = password;
         this.contact = parseInt(contact);
         this.email = email;
+        this.admin_key = adminKey;
     }
     
     async create() {
+        const isAdmin = (admin_key === this.admin_key) ? 'admin' : 'user';
         this.password = await hash(this.password);
         const data = await pool.execute(`
-        INSERT INTO customers (Contact_Number,Customer_Name, Email,Password,Sl_No)
+        INSERT INTO customers (Contact_Number,Customer_Name, Email,Password,Role,Sl_No)
         VALUES 
-        ('${this.contact}', '${this.username}', '${this.email}', '${this.password}', null);
+        ('${this.contact}', '${this.username}', '${this.email}', '${this.password}','${isAdmin}', null);
         `);
-        return data;
+        return isAdmin;
     }
 
     async getUser() {

@@ -74,10 +74,19 @@ class Bill {
         }
     }
     
-    async getBill(transaction_number) {
-        // get bill
-        const [data, _] = await pool.execute(`SELECT * FROM all_bills WHERE Contact_Number=${this.contact} AND Transaction_No=${transaction_number};`);
-        return data;
+    static async generateBills(contact) {
+        const [data, _] = await pool.execute(`SELECT * FROM all_bills WHERE Contact_Number=${contact};`);
+        let bill_of_all = { };
+        const hits = new Set();
+        data.forEach(bill => {
+            if(!hits.has(bill.Transaction_No)) {
+                bill_of_all[bill.Transaction_No] = { data: [] }; 
+            }
+            bill_of_all[bill.Transaction_No].data.push(bill);
+            hits.add(bill.Transaction_No);
+        });
+        bill_of_all.hits = hits.size;
+        return bill_of_all;
     }
 
 }

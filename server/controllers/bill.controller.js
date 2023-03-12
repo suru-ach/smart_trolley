@@ -81,8 +81,13 @@ const addProduct = async (req, res) => {
     // socket.emit('message', { status: "success", data: "data"});
 };
 
+const getProducts = async(req, res) => {
+    const data = await Bill.generateBills(req.user.contact);
+    return res.status(200).json({ data });
+}
+
 // get all transaction numbers
 
 // get all products of the transaction numbers
 
-module.exports = { socket, addProduct }
+module.exports = { socket, addProduct, getProducts }
