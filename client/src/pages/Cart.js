@@ -47,7 +47,7 @@ export default function Cart() {
 
         socket.on('redirect', (data) => {
             console.log(data);
-            // redirect
+            window.location = '/previousbill';
         })
 
     },[]);
