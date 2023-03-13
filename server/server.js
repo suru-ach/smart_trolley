@@ -8,7 +8,7 @@ const cors = require('cors');
 const cookieParser = require('cookie-parser');
 
 const { port } = require('./utils/secret.utils');
-const { auth_token_admin, auth_token_user } = require('./utils/auth.util');
+const { auth_token_admin } = require('./utils/auth.util');
 
 const userRouter = require('./routers/user.router');
 const adminRouter = require('./routers/admin.router');
@@ -29,7 +29,7 @@ app.use(cors());
 app.use(cookieParser());
 
 app.use(userRouter);
-app.use(auth_token_user, billRouter);
+app.use(billRouter);
 app.use(auth_token_admin, adminRouter);
 
 httpServer.listen(port , () => {

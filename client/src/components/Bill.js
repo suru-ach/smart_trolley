@@ -58,13 +58,13 @@ export default function BillComponent({ deleteItem, data, setDeleteItem }) {
                                                 {item.Product_Name}
                                             </Table.Cell>
                                             <Table.Cell>
-                                                {item.Cost}
+                                                {(item.Cost).toFixed(2)}
                                             </Table.Cell>
                                             <Table.Cell>
                                                 {item.Quantity}
                                             </Table.Cell>
                                             <Table.Cell>
-                                                {item.Quantity * item.Cost}
+                                                {(item.Quantity * item.Cost).toFixed(2)}
                                             </Table.Cell>
                                             <Table.Cell>
                                                 <button

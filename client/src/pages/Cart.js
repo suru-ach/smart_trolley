@@ -67,7 +67,7 @@ export default function Cart() {
     return (
         <>
             <Navbar />
-            {localStorage.getItem('contact') ? '' : <QRScannerComponent socket={socket} />}
+            {localStorage.getItem('contact') ? <QRScannerComponent socket={socket} /> : ''}
             <div className={alertMessage ? `fixed bottom-1/4 left-1/2 -translate-x-1/2 z-50 p-4 mb-4 text-sm text-blue-800 w-3/4 rounded-lg bg-blue-50 dark:bg-gray-800 dark:text-blue-400`: `hidden`} role="alert">
                 <span className={alertColor}>{alertStatus+'! '}</span>{'message: '+alertMessage}
             </div>

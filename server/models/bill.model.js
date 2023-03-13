@@ -1,5 +1,15 @@
 const pool = require('../database/config/db');
 
+const filterTransaction = (arr) => {
+    return arr.map(({Transaction_No,
+        Bill_Date,
+        Product_ID,
+        Product_Name,
+        Cost,
+        Quantity}) => {
+        return { Transaction_No, Bill_Date, Product_ID, Product_Name, Cost, Quantity, Total: (Cost*Quantity) }
+    });
+}
 const sql_generate = (transaction_id, contact, items) => {
     const prefix = `INSERT INTO all_bills (
         Transaction_No,
@@ -76,17 +86,24 @@ class Bill {
     
     static async generateBills(contact) {
         const [data, _] = await pool.execute(`SELECT * FROM all_bills WHERE Contact_Number=${contact};`);
-        let bill_of_all = { };
-        const hits = new Set();
-        data.forEach(bill => {
-            if(!hits.has(bill.Transaction_No)) {
-                bill_of_all[bill.Transaction_No] = { data: [] }; 
+        let bill_of_all = [];
+        const transaction_set = {};
+        data.forEach((bill) => {
+            if(!transaction_set[bill.Transaction_No]) {
+                transaction_set[bill.Transaction_No] = [];
             }
-            bill_of_all[bill.Transaction_No].data.push(bill);
-            hits.add(bill.Transaction_No);
+            transaction_set[bill.Transaction_No].push(bill);
         });
-        bill_of_all.hits = hits.size;
-        return bill_of_all;
+        for(const key in transaction_set) {
+            bill_of_all.push({
+                transaction_id: key,
+                data: [...filterTransaction(transaction_set[key])]
+            });
+        }
+        return {
+            hits: bill_of_all.size,
+            bill_of_all
+        };
     }
 
 }
