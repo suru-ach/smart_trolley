@@ -1,5 +1,5 @@
 CREATE TABLE all_bills (
-  Sl_No INT PRIMARY KEY AUTO_INCREMENT
+  Transaction_No INT NOT NULL,
   Contact_Number INT NOT NULL,
   Bill_Date DATE NOT NULL,
   Product_ID INT NOT NULL,

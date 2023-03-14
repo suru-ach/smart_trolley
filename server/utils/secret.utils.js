@@ -1,5 +1,3 @@
-require('dotenv').config()
-
 const secrets = {
     host: process.env.HOST,
     port: process.env.PORT,
@@ -7,7 +5,8 @@ const secrets = {
     password: process.env.PASSWORD,
     database: process.env.DATABASE,
     jwt_key: process.env.JWT_KEY,
-    jwt_expire: process.env.JWT_EXPIRE
+    jwt_expire: process.env.JWT_EXPIRE,
+    admin_key: process.env.ADMIN_KEY
 };
 
 module.exports = {

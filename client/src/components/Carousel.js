@@ -6,13 +6,13 @@ export default function CarouselComponent() {
             <div className="h-56 sm:h-64 xl:h-80 2xl:h-96">
                 <Carousel>
                     <div className="flex h-full items-center justify-center bg-gray-400 dark:bg-gray-700 dark:text-white">
-                       <img src="./Images/logo.jpg"></img>
+                        Slide 1
                     </div>
                     <div className="flex h-full items-center justify-center bg-gray-400 dark:bg-gray-700 dark:text-white">
-                    <img src="./Images/shopping.jpg"></img>
+                        Slide 2
                     </div>
                     <div className="flex h-full items-center justify-center bg-gray-400 dark:bg-gray-700 dark:text-white">
-                        <img src="./logo192.png"></img>
+                        Slide 3
                     </div>
                 </Carousel>
             </div>

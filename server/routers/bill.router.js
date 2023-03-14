@@ -1,9 +1,9 @@
-const express = require('express')
-const router = express.Router()
-const { addProduct, getPreviousBills } = require('../controllers/bill.controller')
+const router = require('express').Router();
 
-router.post('/api/addProduct', addProduct)
-router.get('/api/previousBills', getPreviousBills)
-// router.post("/api/deleteFromBill", deleteProduct)
+const { addProduct, getProducts } = require('../controllers/bill.controller');
+const { auth_token_user } = require('../utils/auth.util');
 
-module.exports = router
+router.route('/api/addproduct').post(addProduct);
+router.route('/api/getproducts').get(auth_token_user,getProducts);
+
+module.exports = router;

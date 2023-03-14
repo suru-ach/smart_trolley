@@ -1,18 +1,11 @@
-import { Html5QrcodeScanner } from "html5-qrcode"
 import { Html5Qrcode } from "html5-qrcode"
 import { useEffect, useState } from "react"
 import axios from 'axios'
 
-export default function QRScannerComponent() {
+export default function QRScannerComponent({ socket }) {
 
-  const [ShowQRReader, setShowQRReader] = useState(localStorage.getItem('cartID'));
-  console.log(localStorage.getItem('cartID'));
+  const [ShowQRReader, setShowQRReader] = useState();
 
-  const setLocalStorage = (data) => {
-    for (const key in data) {
-      window.localStorage.setItem(key, data[key]);
-    }
-  }
   useEffect(() => {
     const html5QrCode = new Html5Qrcode("reader");
 
@@ -21,10 +14,15 @@ export default function QRScannerComponent() {
         .catch((err) => {
           console.log(err);
         });
-        localStorage.setItem("cartID", decodedText);
+
+      const contact = localStorage.getItem('contact');
+      const cart_id = decodedResult.decodedText;
+      if (cart_id !== null || cart_id !== undefined) {
+        socket.emit('join-cart', { contact, cart_id });
         setShowQRReader(true);
-        window.location.reload();
+      }
     };
+
     if (!ShowQRReader) {
       const config = { fps: 30, qrbox: { width: 150, height: 150 } };
       html5QrCode.start({ facingMode: "environment" }, config, qrCodeSuccessCallback);
