@@ -32,7 +32,7 @@ export default function AddProducts() {
         } else {
             const form = new FormData();
             form.append('fileAttr', file);
-            const res = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api/admin/addproducts`, form,
+            const res = await axios.post('/api/admin/addproducts', form,
                 {
                     headers: { 'Content-type': 'multipart/form-data' }
                 }
@@ -54,7 +54,7 @@ export default function AddProducts() {
             name,
             cost: parseFloat(cost)
         };
-        const res = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api/admin/addProduct`, data);
+        const res = await axios.post('/api/admin/addProduct', data);
         setId('');
         setName('');
         setCost('');

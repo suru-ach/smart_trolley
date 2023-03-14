@@ -16,8 +16,7 @@ const billRouter = require('./routers/bill.router');
 
 const io = new Server(httpServer, {
     cors: {
-        // origin: 'http://localhost:5000'
-        origin: process.env.CLIENT_URL,
+        origin: 'http://localhost:5000'
     }
 });
 const { socket } = require('./controllers/bill.controller');

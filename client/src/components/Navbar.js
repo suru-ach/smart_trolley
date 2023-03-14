@@ -1,6 +1,7 @@
 import React from "react";
 import { Dropdown, Navbar, Avatar, DarkThemeToggle, } from "flowbite-react";
 export default function NavbarComponent() {
+    const isAdmin = localStorage.getItem('Role');
     return (
         <>
             <Navbar
@@ -47,24 +48,49 @@ export default function NavbarComponent() {
                     </Dropdown>
                     <Navbar.Toggle />
                 </div>
-                <Navbar.Collapse>
-                    <Navbar.Link
-                        href="/landingPage"
-                        active={true}
-                    >
-                        Home
-                    </Navbar.Link>
-                    <Navbar.Link href="/about">
-                        About
-                    </Navbar.Link>
-                    <Navbar.Link href="/cart">
-                        Cart<i className="fa-thin fa-cart-shopping"></i>
-                    </Navbar.Link>
-                    <Navbar.Link href="/previousbill">
-                        Previous Bills
-                   </Navbar.Link>
-                   
-                </Navbar.Collapse>
+                {
+                    isAdmin === 'admin'
+                        ? (
+                            <Navbar.Collapse>
+                                <Navbar.Link
+                                    href="/landingPage"
+                                    active={true}>
+                                    Home
+                                </Navbar.Link>
+                                <Navbar.Link href="/about">
+                                    About
+                                </Navbar.Link>
+                                <Navbar.Link href="/cart">
+                                    Cart<i className="fa-thin fa-cart-shopping"></i>
+                                </Navbar.Link>
+                                <Navbar.Link href="/previousbill">
+                                    Previous Bills
+                                </Navbar.Link>
+                                <Navbar.Link href="/addproduct">
+                                    Add products
+                                </Navbar.Link>
+                            </Navbar.Collapse>
+                        )
+                        : (
+                            <Navbar.Collapse>
+
+                                <Navbar.Link
+                                    href="/landingPage"
+                                    active={true}>
+                                    Home
+                                </Navbar.Link>
+                                <Navbar.Link href="/about">
+                                    About
+                                </Navbar.Link>
+                                <Navbar.Link href="/cart">
+                                    Cart<i className="fa-thin fa-cart-shopping"></i>
+                                </Navbar.Link>
+                                <Navbar.Link href="/previousbill">
+                                    Previous Bills
+                                </Navbar.Link>
+                            </Navbar.Collapse>
+                        )
+                }
             </Navbar>
         </>
     );

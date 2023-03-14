@@ -24,7 +24,7 @@ export default function Cart() {
     const [deleteItem, setDeleteItem] = useState(0);
 
     useEffect(() => {
-        socket = io(`/${process.env.REACT_APP_SERVER_URL}`);
+        socket = io('http://localhost:3000');
         
         const contact = localStorage.getItem('contact');
         const username = localStorage.getItem('username');
